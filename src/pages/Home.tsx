@@ -1,32 +1,38 @@
 import { useState, useEffect } from "react";
 import type { Product } from "../types/product.types";
-import { getProducts } from "../services/productService";
+import { getProducts, searchProducts } from "../services/productService";
 import ProductCard from "../components/products/ProductCard";
+import { useSearchParams } from "react-router-dom";
 
 function Home() {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState<Boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
+  const [searchParams] = useSearchParams();
+  const query = searchParams.get("q") ?? "";
+
   useEffect(() => {
-    try {
-      setLoading(true);
-      setError(null);
+    async function loadProducts() {
+      try {
+        setLoading(true);
+        setError(null);
 
-      async function loadProducts() {
-        const data = await getProducts();
+        const data = query ? await searchProducts(query) : await getProducts();
+
         setProducts(data);
-      }
+      } catch (error: unknown) {
+        const message =
+          error instanceof Error ? error.message : "Something went wrong";
 
-      loadProducts();
-    } catch (error: unknown) {
-      const message =
-        error instanceof Error ? error.message : "Something went wrong";
-      setError(message);
-    } finally {
-      setLoading(false);
+        setError(message);
+      } finally {
+        setLoading(false);
+      }
     }
-  }, []);
+
+    loadProducts();
+  }, [query]);
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
