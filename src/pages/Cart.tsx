@@ -64,17 +64,21 @@ function Cart() {
               >
                 {/* Item Thumbnail & Info */}
                 <div className="flex items-center gap-4 w-full sm:w-auto">
-                  <div className="w-20 h-20 bg-gray-100 rounded-xl overflow-hidden flex-shrink-0 border border-gray-100">
-                    <img
-                      src={item.thumbnail || item.images?.[0]}
-                      alt={item.title}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
+                  <Link to={`/products/${item.id}`}>
+                    <div className="w-20 h-20 bg-gray-100 rounded-xl overflow-hidden flex-shrink-0 border border-gray-100">
+                      <img
+                        src={item.thumbnail || item.images?.[0]}
+                        alt={item.title}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  </Link>
                   <div>
-                    <h3 className="font-semibold text-gray-900 text-base line-clamp-1">
-                      {item.title}
-                    </h3>
+                    <Link to={`/products/${item.id}`}>
+                      <h3 className="font-semibold text-gray-900 text-base line-clamp-1">
+                        {item.title}
+                      </h3>
+                    </Link>
                     <p className="text-sm font-bold text-indigo-600 mt-0.5">
                       AED {item.price}
                     </p>
@@ -92,7 +96,7 @@ function Cart() {
                     <button
                       type="button"
                       onClick={() => decreaseQuantity(item.id)}
-                      className="px-3 py-1.5 text-gray-600 hover:bg-gray-200 transition-colors text-sm font-semibold"
+                      className="cursor-pointer px-3 py-1.5 text-gray-600 hover:bg-gray-200 transition-colors text-sm font-semibold"
                     >
                       -
                     </button>
@@ -102,7 +106,7 @@ function Cart() {
                     <button
                       type="button"
                       onClick={() => increaseQuantity(item.id)}
-                      className="px-3 py-1.5 text-gray-600 hover:bg-gray-200 transition-colors text-sm font-semibold"
+                      className="cursor-pointer px-3 py-1.5 text-gray-600 hover:bg-gray-200 transition-colors text-sm font-semibold"
                     >
                       +
                     </button>
@@ -112,7 +116,7 @@ function Cart() {
                   <button
                     type="button"
                     onClick={() => removeFromCart(item.id)}
-                    className="p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-xl transition-colors"
+                    className="cursor-pointer p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-xl transition-colors"
                     aria-label="Remove item"
                   >
                     <svg
