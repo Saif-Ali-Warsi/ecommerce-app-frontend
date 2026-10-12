@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import type { Product } from "../types/product.types";
-import { getProducts, getCategories } from "../services/productService";
+import {
+  getProducts,
+  getCategories,
+  getProductsByCategory,
+} from "../services/productService";
 import ProductCard from "../components/products/ProductCard";
 
 function Products() {
@@ -16,7 +20,9 @@ function Products() {
         setLoading(true);
         setError(null);
 
-        const data = await getProducts();
+        const data = selectedCategory
+          ? await getProductsByCategory(selectedCategory)
+          : await getProducts();
 
         setProducts(data);
       } catch (error: unknown) {
@@ -29,7 +35,7 @@ function Products() {
     }
 
     loadProducts();
-  }, []);
+  }, [selectedCategory]);
 
   useEffect(() => {
     async function loadCategories() {

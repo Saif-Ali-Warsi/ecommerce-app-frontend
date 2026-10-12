@@ -5,7 +5,9 @@ const API_URL = "https://dummyjson.com/products";
 
 // get products
 export async function getProducts(): Promise<Product[]> {
-  const response = await axios.get<{ products: Product[] }>(API_URL);
+  const response = await axios.get<{ products: Product[] }>(API_URL, {
+    params: { limit: 0 },
+  });
 
   return response.data.products;
 }
@@ -34,4 +36,15 @@ export async function getCategories(): Promise<string[]> {
   const response = await axios.get<string[]>(`${API_URL}/category-list`);
 
   return response.data;
+}
+
+// products by category
+export async function getProductsByCategory(
+  category: string,
+): Promise<Product[]> {
+  const response = await axios.get<{ products: Product[] }>(
+    `${API_URL}/category/${category}`,
+  );
+
+  return response.data.products;
 }

@@ -1,4 +1,6 @@
 import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+
 
 function ProductCarousel() {
   const responsive = {
