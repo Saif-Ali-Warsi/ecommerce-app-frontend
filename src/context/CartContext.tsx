@@ -13,20 +13,42 @@ type CartContextType = {
   increaseQuantity: (productId: number) => void;
   decreaseQuantity: (productId: number) => void;
   removeFromCart: (productId: number) => void;
+
+  wishlist: Product[];
+  addToWishlist: (products: Product) => void;
+  removeFromWishlist: (productId: number) => void;
 };
 
 export const CartContext = createContext<CartContextType | null>(null);
 
 export function CartProvider({ children }: { children: ReactNode }) {
   const [cartItems, setCartItems] = useState<CartItem[]>(() => {
-    const savedCart = localStorage.getItem("cart");
+    try {
+      const savedCart = localStorage.getItem("cart");
 
-    return savedCart ? (JSON.parse(savedCart) as CartItem[]) : [];
+      return savedCart ? (JSON.parse(savedCart) as CartItem[]) : [];
+    } catch {
+      return [];
+    }
   });
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cartItems));
   }, [cartItems]);
+
+  const [wishlist, setWishlist] = useState<Product[]>(() => {
+    try {
+      const savedWishlist = localStorage.getItem("wishlist");
+
+      return savedWishlist ? (JSON.parse(savedWishlist) as Product[]) : [];
+    } catch {
+      return [];
+    }
+  });
+
+  useEffect(() => {
+    localStorage.setItem("wishlist", JSON.stringify(wishlist));
+  }, [wishlist]);
 
   function increaseQuantity(productId: number) {
     setCartItems((items) =>
@@ -52,6 +74,22 @@ export function CartProvider({ children }: { children: ReactNode }) {
     setCartItems((items) => items.filter((item) => item.id !== productId));
   }
 
+  function addToWishlist(product: Product) {
+    setWishlist((items) => {
+      const alreadyExists = items.some((item) => item.id === product.id);
+
+      if (alreadyExists) {
+        return items;
+      }
+
+      return [...items, product];
+    });
+  }
+
+  function removeFromWishlist(productId: number) {
+    setWishlist((items) => items.filter((item) => item.id !== productId));
+  }
+
   return (
     <CartContext.Provider
       value={{
@@ -60,6 +98,9 @@ export function CartProvider({ children }: { children: ReactNode }) {
         increaseQuantity,
         decreaseQuantity,
         removeFromCart,
+        wishlist,
+        addToWishlist,
+        removeFromWishlist,
       }}
     >
       {children}

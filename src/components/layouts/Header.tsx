@@ -7,12 +7,14 @@ function Header() {
   const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
 
-  const { cartItems } = useCart();
+  const { cartItems, wishlist } = useCart();
 
   const cartQuantity = cartItems.reduce(
     (total, item) => total + item.quantity,
     0,
   );
+
+  const wishlistCount = wishlist.length;
 
   function handleSearch(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -59,6 +61,12 @@ function Header() {
               >
                 Categories
               </Link>
+              <Link
+                to="/wishlist"
+                className="text-sm font-medium text-gray-700 hover:text-indigo-600 transition-colors"
+              >
+                Wishlist
+              </Link>
             </nav>
 
             {/* Right Action Icons & Login */}
@@ -84,7 +92,33 @@ function Header() {
                 </svg>
                 {/* Badge Counter */}
                 <span className="absolute top-1 right-1 w-4 h-4 bg-indigo-600 text-white text-[10px] font-bold rounded-full flex items-center justify-center">
-                 {cartQuantity} 
+                  {cartQuantity}
+                </span>
+              </Link>
+
+              <Link
+                to="/wishlist"
+                className="relative p-2 text-gray-700 hover:text-indigo-600 transition-colors"
+                aria-label="Wishlist"
+              >
+                {/* Heart Icon for Wishlist */}
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"
+                  />
+                </svg>
+
+                {/* Wishlist Badge Counter */}
+                <span className="absolute top-1 right-1 w-4 h-4 bg-indigo-600 text-white text-[10px] font-bold rounded-full flex items-center justify-center">
+                  {wishlistCount}
                 </span>
               </Link>
 
@@ -160,6 +194,16 @@ function Header() {
               <span>Cart</span>
               <span className="bg-indigo-100 text-indigo-600 text-xs font-semibold px-2 py-0.5 rounded-full">
                 {cartQuantity} {cartQuantity === 1 ? "items" : "item"}
+              </span>
+            </Link>
+            <Link
+              to="/wishlist"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="flex items-center justify-between px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-indigo-600"
+            >
+              <span>Wishlist</span>
+              <span className="bg-indigo-100 text-indigo-600 text-xs font-semibold px-2 py-0.5 rounded-full">
+                {wishlistCount} {wishlistCount === 1 ? "items" : "item"}
               </span>
             </Link>
             <div className="pt-2">
