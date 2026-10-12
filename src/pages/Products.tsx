@@ -4,6 +4,7 @@ import {
   getProducts,
   getCategories,
   getProductsByCategory,
+  getProductsPaginated,
 } from "../services/productService";
 import ProductCard from "../components/products/ProductCard";
 
@@ -14,17 +15,28 @@ function Products() {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [totalProducts, setTotalProducts] = useState<number>(0);
+  const pageSize = 12;
+
+  const totalPages = Math.ceil(totalProducts / pageSize);
+
   useEffect(() => {
     async function loadProducts() {
       try {
         setLoading(true);
         setError(null);
 
-        const data = selectedCategory
-          ? await getProductsByCategory(selectedCategory)
-          : await getProducts();
+        const skip = (currentPage - 1) * pageSize;
 
-        setProducts(data);
+        const data = await getProductsPaginated(
+          pageSize,
+          skip,
+          selectedCategory || undefined,
+        );
+
+        setProducts(data.products);
+        setTotalProducts(data.total);
       } catch (error: unknown) {
         setError(
           error instanceof Error ? error.message : "Something went wrong",
@@ -35,7 +47,7 @@ function Products() {
     }
 
     loadProducts();
-  }, [selectedCategory]);
+  }, [currentPage, selectedCategory]);
 
   useEffect(() => {
     async function loadCategories() {
@@ -56,7 +68,10 @@ function Products() {
       <div className="p-4 relative">
         <select
           value={selectedCategory}
-          onChange={(event) => setSelectedCategory(event.target.value)}
+          onChange={(event) => {
+            setSelectedCategory(event.target.value);
+            setCurrentPage(1);
+          }}
           className="w-full appearance-none bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-xl px-4 py-2.5 pr-10 focus:outline-none focus:bg-white focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 transition-all cursor-pointer"
         >
           <option value="">All Categories</option>
@@ -180,6 +195,62 @@ function Products() {
             {products.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
+          </div>
+        )}
+
+        {!loading && !error && totalPages > 1 && (
+          <div className="flex items-center justify-center gap-4 my-8">
+            {/* Previous Button */}
+            <button
+              type="button"
+              disabled={currentPage === 1}
+              onClick={() => setCurrentPage((page) => page - 1)}
+              className="flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-200 rounded-xl hover:bg-gray-50 hover:text-indigo-600 disabled:opacity-40 disabled:cursor-not-allowed transition-all shadow-sm"
+            >
+              <svg
+                className="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M15 19l-7-7 7-7"
+                />
+              </svg>
+              Previous
+            </button>
+
+            {/* Page Indicator */}
+            <span className="text-sm font-medium text-gray-600 px-2">
+              Page <strong className="text-gray-900">{currentPage}</strong> of{" "}
+              <strong className="text-gray-900">{totalPages}</strong>
+            </span>
+
+            {/* Next Button */}
+            <button
+              type="button"
+              disabled={currentPage === totalPages}
+              onClick={() => setCurrentPage((page) => page + 1)}
+              className="flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-200 rounded-xl hover:bg-gray-50 hover:text-indigo-600 disabled:opacity-40 disabled:cursor-not-allowed transition-all shadow-sm"
+            >
+              Next
+              <svg
+                className="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </button>
           </div>
         )}
       </div>

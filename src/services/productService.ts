@@ -48,3 +48,23 @@ export async function getProductsByCategory(
 
   return response.data.products;
 }
+
+export async function getProductsPaginated(
+  limit: number,
+  skip: number,
+  category?: string,
+): Promise<{ products: Product[]; total: number }> {
+  const url = category ? `${API_URL}/category/${category}` : API_URL;
+
+  const response = await axios.get<{
+    products: Product[];
+    total: number;
+  }>(url, {
+    params: { limit, skip },
+  });
+
+  return {
+    products: response.data.products,
+    total: response.data.total,
+  };
+}
