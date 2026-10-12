@@ -21,6 +21,27 @@ function Products() {
 
   const totalPages = Math.ceil(totalProducts / pageSize);
 
+  const [sortBy, setSortBy] = useState<string>("default");
+
+  const sortedProducts = [...products].sort((a, b) => {
+    switch (sortBy) {
+      case "price-low":
+        return a.price - b.price;
+
+      case "price-high":
+        return b.price - a.price;
+
+      case "name-asc":
+        return a.title.localeCompare(b.title);
+
+      case "name-desc":
+        return b.title.localeCompare(a.title);
+
+      default:
+        return 0;
+    }
+  });
+
   useEffect(() => {
     async function loadProducts() {
       try {
@@ -80,6 +101,37 @@ function Products() {
               {category}
             </option>
           ))}
+        </select>
+
+        {/* Custom Dropdown Arrow Icon */}
+        <div className="absolute inset-y-0 right-5 flex items-center pr-3 pointer-events-none text-gray-400">
+          <svg
+            className="w-4 h-4"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M19 9l-7 7-7-7"
+            />
+          </svg>
+        </div>
+      </div>
+
+      <div className="p-4 relative">
+        <select
+          value={sortBy}
+          onChange={(event) => setSortBy(event.target.value)}
+          className="w-full appearance-none bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-xl px-4 py-2.5 pr-10 focus:outline-none focus:bg-white focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 transition-all cursor-pointer"
+        >
+          <option value="default">Default</option>
+          <option value="price-low">Price: Low to High</option>
+          <option value="price-high">Price: High to Low</option>
+          <option value="name-asc">Name: A to Z</option>
+          <option value="name-desc">Name: Z to A</option>
         </select>
 
         {/* Custom Dropdown Arrow Icon */}
@@ -192,7 +244,7 @@ function Products() {
         {/* 4. Products Grid State */}
         {!loading && !error && products.length > 0 && (
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-6">
-            {products.map((product) => (
+            {sortedProducts.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>
