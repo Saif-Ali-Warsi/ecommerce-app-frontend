@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 import type { Product } from "../types/product.types";
 import {
-  getProducts,
   getCategories,
-  getProductsByCategory,
   getProductsPaginated,
 } from "../services/productService";
 import ProductCard from "../components/products/ProductCard";

@@ -35,7 +35,7 @@ function ProductCard({ product }: ProductCardProps) {
                 {product.title}
               </h3>
               <span className="text-indigo-600 font-bold text-xs whitespace-nowrap">
-                {product.price}
+               AED {product.price}
               </span>
             </div>
 

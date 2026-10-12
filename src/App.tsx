@@ -3,7 +3,7 @@ import Home from "./pages/Home";
 import MainLayout from "./components/layouts/MainLayout";
 import ProductDetails from "./pages/ProductDetails";
 import Products from "./pages/Products";
-
+import Cart from "./pages/Cart";
 
 function App() {
   return (
@@ -14,6 +14,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/products/:id" element={<ProductDetails />} />
             <Route path="/products" element={<Products />} />
+            <Route path="/cart" element={<Cart />} />
           </Route>
         </Routes>
       </HashRouter>
