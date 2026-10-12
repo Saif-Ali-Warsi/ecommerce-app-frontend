@@ -1,3 +1,4 @@
+import { useCart } from "../../context/CartContext";
 import type { Product } from "../../types/product.types";
 import { Link } from "react-router-dom";
 
@@ -6,6 +7,8 @@ type ProductCardProps = {
 };
 
 function ProductCard({ product }: ProductCardProps) {
+  const { addToCart } = useCart();
+
   return (
     <>
       <Link to={`/products/${product.id}`}>
@@ -42,7 +45,14 @@ function ProductCard({ product }: ProductCardProps) {
             </p>
 
             {/* Action Button */}
-            <button className="w-full bg-gray-900 hover:bg-indigo-600 text-white font-medium py-1.5 px-3 rounded-lg text-xs transition-colors duration-200 flex items-center justify-center gap-1.5 shadow-sm">
+            <button
+              onClick={(event) => {
+                event.preventDefault();
+                event.stopPropagation();
+                addToCart(product);
+              }}
+              className="cursor-pointer w-full bg-gray-900 hover:bg-indigo-600 text-white font-medium py-1.5 px-3 rounded-lg text-xs transition-colors duration-200 flex items-center justify-center gap-1.5 shadow-sm"
+            >
               <svg
                 className="w-3.5 h-3.5"
                 fill="none"

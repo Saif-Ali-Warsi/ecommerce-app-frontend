@@ -1,10 +1,18 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useCart } from "../../context/CartContext";
 
 function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
+
+  const { cartItems } = useCart();
+
+  const cartQuantity = cartItems.reduce(
+    (total, item) => total + item.quantity,
+    0,
+  );
 
   function handleSearch(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -76,7 +84,7 @@ function Header() {
                 </svg>
                 {/* Badge Counter */}
                 <span className="absolute top-1 right-1 w-4 h-4 bg-indigo-600 text-white text-[10px] font-bold rounded-full flex items-center justify-center">
-                  2
+                 {cartQuantity} 
                 </span>
               </Link>
 
@@ -151,7 +159,7 @@ function Header() {
             >
               <span>Cart</span>
               <span className="bg-indigo-100 text-indigo-600 text-xs font-semibold px-2 py-0.5 rounded-full">
-                2 items
+                {cartQuantity} {cartQuantity === 1 ? "items" : "item"}
               </span>
             </Link>
             <div className="pt-2">
