@@ -1,9 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 
 function Cart() {
   const { cartItems, increaseQuantity, decreaseQuantity, removeFromCart } =
     useCart();
+
+  const navigate = useNavigate();
 
   const cartTotal = cartItems.reduce(
     (total, item) => total + item.price * item.quantity,
@@ -158,7 +160,7 @@ function Cart() {
             <div className="flex justify-between text-gray-600">
               <span>Shipping</span>
               <span className="font-semibold text-emerald-600">
-              +  AED {shippingCost.toFixed(2)}
+                + AED {shippingCost.toFixed(2)}
               </span>
             </div>
           </div>
@@ -175,13 +177,7 @@ function Cart() {
             className="cursor-pointer w-full bg-gray-900 hover:bg-indigo-600 text-white font-medium py-3 px-4 rounded-xl transition-all duration-200 shadow-sm flex items-center justify-center gap-2"
             disabled={cartItems.length === 0}
             onClick={() => {
-              (console.log("Proceeding to checkout"),
-                {
-                  cartItems,
-                  subtotal: cartTotal,
-                  shipping: shippingCost,
-                  total: orderTotal,
-                });
+              navigate("/checkout");
             }}
           >
             Proceed to Checkout

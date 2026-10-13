@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useCart } from "../context/CartContext";
 import { checkoutSchema } from "../validations/checkoutSchema";
+import { useNavigate } from "react-router-dom";
 
 type CheckoutFormData = {
   fullName: string;
@@ -21,6 +22,8 @@ function Checkout() {
     resolver: yupResolver(checkoutSchema),
   });
 
+  const navigate = useNavigate();
+
   const subtotal = cartItems.reduce(
     (total, item) => total + item.price * item.quantity,
     0,
@@ -34,9 +37,12 @@ function Checkout() {
   }
 
   function onSubmit(data: CheckoutFormData) {
-    console.log("Validate delivery details:", data);
-    console.log("Order items:", cartItems);
-    console.log("Order total:", total);
+    navigate("/order-cofirmation", {
+      state: {
+        ...data,
+        total,
+      },
+    });
   }
 
   return (
