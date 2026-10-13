@@ -10,6 +10,9 @@ function Cart() {
     0,
   );
 
+  const shippingCost = cartTotal > 0 ? 5 : 0;
+  const orderTotal = cartTotal + shippingCost;
+
   // 1. Empty Cart State
   if (cartItems.length === 0) {
     return (
@@ -154,20 +157,32 @@ function Cart() {
             </div>
             <div className="flex justify-between text-gray-600">
               <span>Shipping</span>
-              <span className="font-semibold text-emerald-600">Free</span>
+              <span className="font-semibold text-emerald-600">
+              +  AED {shippingCost.toFixed(2)}
+              </span>
             </div>
           </div>
 
           <div className="flex justify-between text-base font-bold text-gray-900 py-4">
             <span>Total</span>
             <span className="text-indigo-600 text-xl">
-              AED {cartTotal.toFixed(2)}
+              AED {orderTotal.toFixed(2)}
             </span>
           </div>
 
           <button
             type="button"
             className="cursor-pointer w-full bg-gray-900 hover:bg-indigo-600 text-white font-medium py-3 px-4 rounded-xl transition-all duration-200 shadow-sm flex items-center justify-center gap-2"
+            disabled={cartItems.length === 0}
+            onClick={() => {
+              (console.log("Proceeding to checkout"),
+                {
+                  cartItems,
+                  subtotal: cartTotal,
+                  shipping: shippingCost,
+                  total: orderTotal,
+                });
+            }}
           >
             Proceed to Checkout
           </button>
