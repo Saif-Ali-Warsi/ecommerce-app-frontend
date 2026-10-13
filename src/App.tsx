@@ -7,21 +7,23 @@ import Cart from "./pages/Cart";
 import Wishlist from "./pages/Wishlist";
 import Checkout from "./pages/Checkout";
 import OrderConfirmation from "./pages/OrderConfirmation";
+import Login from "./pages/Login";
 
 function App() {
   return (
     <>
       <HashRouter>
         <Routes>
+          <Route path="/" element={<Login />} />
           <Route element={<MainLayout />}>
             <Route path="/" element={<Home />} />
             <Route path="/products/:id" element={<ProductDetails />} />
             <Route path="/products" element={<Products />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/wishlist" element={<Wishlist />} />
-            <Route path="/checkout" element={<Checkout />} />
-            <Route path="/order-cofirmation" element={<OrderConfirmation />} />
           </Route>
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/order-cofirmation" element={<OrderConfirmation />} />
         </Routes>
       </HashRouter>
     </>
