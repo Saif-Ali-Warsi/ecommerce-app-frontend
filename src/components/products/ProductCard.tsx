@@ -89,7 +89,7 @@ function ProductCard({ product }: ProductCardProps) {
                 event.stopPropagation();
                 addToCart(product);
               }}
-              className="cursor-pointer w-full bg-gray-900 hover:bg-indigo-600 text-white font-medium py-1.5 px-3 rounded-lg text-xs transition-colors duration-200 flex items-center justify-center gap-1.5 shadow-sm"
+              className="cursor-pointer w-full bg-[#d7a296] hover:bg-[#ddb5ac] text-white font-medium py-1.5 px-3 rounded-lg text-xs transition-colors duration-200 flex items-center justify-center gap-1.5 shadow-sm"
             >
               <svg
                 className="w-3.5 h-3.5"

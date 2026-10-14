@@ -31,17 +31,50 @@ function Header() {
   return (
     <>
       <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100 transition-all">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-4 lg:px-4">
           <div className="flex items-center justify-between h-16">
-            {/* Logo / Brand Name */}
-            <Link to="/" className="flex items-center gap-2 group">
-              <div className="w-9 h-9 bg-gray-600 rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-md group-hover:bg-gray-700 transition-colors">
-                S
-              </div>
-              <span className="text-xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
-                My Store
-              </span>
-            </Link>
+            <div className="flex items-center justify-between">
+              {/* Mobile Menu Button */}
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="md:hidden p-2 rounded-lg text-gray-600 hover:bg-gray-100 focus:outline-none"
+                aria-label="Toggle navigation menu"
+              >
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                >
+                  {isMobileMenuOpen ? (
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  ) : (
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M4 6h16M4 12h16M4 18h16"
+                    />
+                  )}
+                </svg>
+              </button>
+
+              {/* Logo / Brand Name */}
+              <Link to="/" className="flex items-center gap-2 group">
+                <div className="w-9 h-9 bg-[#d7a296] rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-md group-hover:bg-[#ddb5ac] transition-colors">
+                  S
+                </div>
+                <span className="text-xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
+                  My Store
+                </span>
+              </Link>
+            </div>
+
+           
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center gap-8">
@@ -70,6 +103,62 @@ function Header() {
                 Wishlist
               </Link>
             </nav>
+
+             {/* Search */}
+            <div className="">
+              <div className="relative w-full">
+                {/* Search Icon */}
+                <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400">
+                  <svg
+                    className="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                    />
+                  </svg>
+                </div>
+
+                {/* Input Field */}
+                <form onSubmit={handleSearch}>
+                  <input
+                    type="search"
+                    placeholder="Search products..."
+                    value={searchTerm}
+                    onChange={(event) => setSearchTerm(event.target.value)}
+                    className="w-full pl-10 pr-10 py-2.5 bg-gray-50 border border-[#ddb5ac] rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:bg-white focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 transition-all duration-200"
+                  />
+
+                  {/* Clear Input Button (Visible only when text exists) */}
+                  {searchTerm && (
+                    <button
+                      type="submit"
+                      className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600"
+                      aria-label="Clear search"
+                    >
+                      <svg
+                        className="w-4 h-4"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M6 18L18 6M6 6l12 12"
+                        />
+                      </svg>
+                    </button>
+                  )}
+                </form>
+              </div>
+            </div>
 
             {/* Right Action Icons & Login */}
             <div className="hidden md:flex items-center gap-5">
@@ -144,35 +233,6 @@ function Header() {
                 </Link>
               )}
             </div>
-
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 rounded-lg text-gray-600 hover:bg-gray-100 focus:outline-none"
-              aria-label="Toggle navigation menu"
-            >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-              >
-                {isMobileMenuOpen ? (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                ) : (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                )}
-              </svg>
-            </button>
           </div>
         </div>
 
@@ -251,61 +311,6 @@ function Header() {
             </div>
           </div>
         )}
-
-        <div className="p-4">
-          <div className="relative w-full">
-            {/* Search Icon */}
-            <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400">
-              <svg
-                className="w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                />
-              </svg>
-            </div>
-
-            {/* Input Field */}
-            <form onSubmit={handleSearch}>
-              <input
-                type="search"
-                placeholder="Search products..."
-                value={searchTerm}
-                onChange={(event) => setSearchTerm(event.target.value)}
-                className="w-full pl-10 pr-10 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:bg-white focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 transition-all duration-200"
-              />
-
-              {/* Clear Input Button (Visible only when text exists) */}
-              {searchTerm && (
-                <button
-                  type="submit"
-                  className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600"
-                  aria-label="Clear search"
-                >
-                  <svg
-                    className="w-4 h-4"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M6 18L18 6M6 6l12 12"
-                    />
-                  </svg>
-                </button>
-              )}
-            </form>
-          </div>
-        </div>
       </header>
     </>
   );
