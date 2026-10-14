@@ -8,13 +8,14 @@ import Wishlist from "./pages/Wishlist";
 import Checkout from "./pages/Checkout";
 import OrderConfirmation from "./pages/OrderConfirmation";
 import Login from "./pages/Login";
+import ProtectedRoute from "./components/auth/ProtectedRoute";
 
 function App() {
   return (
     <>
       <HashRouter>
         <Routes>
-          <Route path="/" element={<Login />} />
+          <Route path="login" element={<Login />} />
           <Route element={<MainLayout />}>
             <Route path="/" element={<Home />} />
             <Route path="/products/:id" element={<ProductDetails />} />
@@ -22,8 +23,10 @@ function App() {
             <Route path="/cart" element={<Cart />} />
             <Route path="/wishlist" element={<Wishlist />} />
           </Route>
-          <Route path="/checkout" element={<Checkout />} />
-          <Route path="/order-cofirmation" element={<OrderConfirmation />} />
+          <Route element={<ProtectedRoute />}>
+            <Route path="/checkout" element={<Checkout />} />
+            <Route path="/order-cofirmation" element={<OrderConfirmation />} />
+          </Route>
         </Routes>
       </HashRouter>
     </>

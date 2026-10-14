@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useCart } from "../../context/CartContext";
+import { useAuth } from "../../context/AuthContext";
 
 function Header() {
+  const { user, isAuthenticated, logout } = useAuth();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
@@ -123,12 +125,24 @@ function Header() {
               </Link>
 
               {/* Login Button */}
-              <Link
-                to="/login"
-                className="px-4 py-2 text-sm font-medium text-white bg-gray-900 hover:bg-indigo-600 rounded-xl transition-all duration-200 shadow-sm hover:shadow-md"
-              >
-                Login
-              </Link>
+              {isAuthenticated ? (
+                <>
+                  <span>Welcome, {user?.firstName}</span>{" "}
+                  <button
+                    onClick={logout}
+                    className="cursor-pointer px-4 py-2 text-sm font-medium text-white bg-gray-900 hover:bg-indigo-600 rounded-xl transition-all duration-200 shadow-sm hover:shadow-md"
+                  >
+                    Logout
+                  </button>
+                </>
+              ) : (
+                <Link
+                  to="/login"
+                  className="cursor-pointer px-4 py-2 text-sm font-medium text-white bg-gray-900 hover:bg-indigo-600 rounded-xl transition-all duration-200 shadow-sm hover:shadow-md"
+                >
+                  Login
+                </Link>
+              )}
             </div>
 
             {/* Mobile Menu Button */}
@@ -165,6 +179,14 @@ function Header() {
         {/* Mobile Dropdown Menu */}
         {isMobileMenuOpen && (
           <div className="md:hidden border-t border-gray-100 bg-white px-4 pt-2 pb-4 space-y-2">
+            <div>
+              Welcome,{" "}
+              {isAuthenticated ? (
+                <span> {user?.firstName}</span>
+              ) : (
+                <span>Guest</span>
+              )}
+            </div>
             <Link
               to="/"
               onClick={() => setIsMobileMenuOpen(false)}
@@ -207,13 +229,25 @@ function Header() {
               </span>
             </Link>
             <div className="pt-2">
-              <Link
-                to="/login"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="block w-full text-center px-4 py-2.5 text-sm font-medium text-white bg-gray-900 rounded-xl"
-              >
-                Login
-              </Link>
+              {/* Login Button */}
+
+              {isAuthenticated ? (
+                <Link
+                  to="/login"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block w-full text-center px-4 py-2.5 text-sm font-medium text-white bg-gray-900 rounded-xl"
+                >
+                  Logout
+                </Link>
+              ) : (
+                <Link
+                  to="/login"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block w-full text-center px-4 py-2.5 text-sm font-medium text-white bg-gray-900 rounded-xl"
+                >
+                  Login
+                </Link>
+              )}
             </div>
           </div>
         )}
