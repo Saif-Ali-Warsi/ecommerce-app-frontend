@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import { loginSchema } from "../validations/loginSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { loginUser } from "../services/authService";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -21,23 +21,26 @@ function Login() {
     resolver: yupResolver(loginSchema),
   });
 
-  const inputRef = useRef<HTMLInputElement>(null);
+  // const inputRef = useRef<HTMLInputElement>(null);
 
   const { login } = useAuth();
   const navigate = useNavigate();
 
   const [errorMessage, setErrorMessage] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    function focusInput() {
-      inputRef.current?.focus();
-    }
+  // useEffect(() => {
+  //   function focusInput() {
+  //     inputRef.current?.focus();
+  //   }
 
-    focusInput();
-  }, []);
+  //   focusInput();
+  // }, []);
 
   async function onSubmit(data: LoginFormData) {
+    setLoading(true);
+
     try {
       setErrorMessage("");
 
@@ -51,6 +54,8 @@ function Login() {
     } catch (error) {
       setErrorMessage("Invalid username or password. Please try again.");
       toast.error("Invalid email or password.");
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -93,7 +98,6 @@ function Login() {
               </label>
               <input
                 {...register("username")}
-                ref={inputRef}
                 type="text"
                 placeholder="Enter your username"
                 className={`w-full px-4 py-2.5 bg-gray-50 border rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:bg-white focus:ring-2 transition-all ${
@@ -137,7 +141,7 @@ function Login() {
             type="submit"
             className="cursor-pointer w-full bg-[#d7a296] hover:bg-[#d9a79c] text-white font-bold py-5 px-3 rounded-lg text-md border-2 border-[#8c5245] shadow-[4px_4px_0px_0px_#8c5245] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[2px_2px_0px_0px_#8c5245] transition-all flex items-center justify-center gap-1.5"
           >
-            Sign In
+            {loading ? "Processing.." : "Sign In"}
           </button>
         </form>
       </div>
