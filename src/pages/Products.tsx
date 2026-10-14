@@ -1,11 +1,10 @@
-import { memo, useEffect, useState } from "react";
+import { memo, useMemo, useEffect, useState } from "react";
 import type { Product } from "../types/product.types";
 import {
   getCategories,
   getProductsPaginated,
 } from "../services/productService";
 import ProductCard from "../components/products/ProductCard";
-
 
 const Products = memo(function Products() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -22,24 +21,26 @@ const Products = memo(function Products() {
 
   const [sortBy, setSortBy] = useState<string>("default");
 
-  const sortedProducts = [...products].sort((a, b) => {
-    switch (sortBy) {
-      case "price-low":
-        return a.price - b.price;
+  const sortedProducts = useMemo(() => {
+    return [...products].sort((a, b) => {
+      switch (sortBy) {
+        case "price-low":
+          return a.price - b.price;
 
-      case "price-high":
-        return b.price - a.price;
+        case "price-high":
+          return b.price - a.price;
 
-      case "name-asc":
-        return a.title.localeCompare(b.title);
+        case "name-asc":
+          return a.title.localeCompare(b.title);
 
-      case "name-desc":
-        return b.title.localeCompare(a.title);
+        case "name-desc":
+          return b.title.localeCompare(a.title);
 
-      default:
-        return 0;
-    }
-  });
+        default:
+          return 0;
+      }
+    });
+  }, [products, sortBy]);
 
   useEffect(() => {
     async function loadProducts() {

@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import { loginSchema } from "../validations/loginSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { loginUser } from "../services/authService";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -21,11 +21,21 @@ function Login() {
     resolver: yupResolver(loginSchema),
   });
 
+  const inputRef = useRef<HTMLInputElement>(null);
+
   const { login } = useAuth();
   const navigate = useNavigate();
 
   const [errorMessage, setErrorMessage] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    function focusInput() {
+      inputRef.current?.focus();
+    }
+
+    focusInput();
+  }, []);
 
   async function onSubmit(data: LoginFormData) {
     try {
@@ -83,6 +93,7 @@ function Login() {
               </label>
               <input
                 {...register("username")}
+                ref={inputRef}
                 type="text"
                 placeholder="Enter your username"
                 className={`w-full px-4 py-2.5 bg-gray-50 border rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:bg-white focus:ring-2 transition-all ${
