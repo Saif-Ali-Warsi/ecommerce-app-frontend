@@ -23,7 +23,7 @@ function Wishlist() {
             />
           </svg>
         </div>
-        <h2 className="text-2xl font-bold text-gray-900 mb-2">
+        <h2 className="text-2xl font-bold text-[#8c5245] mb-2">
           Your Wishlist is Empty
         </h2>
         <p className="text-gray-500 mb-6 text-sm">
@@ -31,7 +31,7 @@ function Wishlist() {
         </p>
         <Link
           to="/products"
-          className="inline-block bg-[#d7a296] hover:bg-[#ddb5ac] text-white font-medium px-6 py-3 rounded-xl transition-all shadow-sm"
+          className="inline-block cursor-pointer bg-[#d7a296] hover:bg-[#d9a79c] text-[#8c5245] font-bold py-3 px-3 rounded-lg text-md border-2 border-[#8c5245] shadow-[4px_4px_0px_0px_#8c5245] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[2px_2px_0px_0px_#8c5245] transition-all flex items-center justify-center gap-1.5"
         >
           Explore Products
         </Link>
@@ -74,13 +74,13 @@ function Wishlist() {
             <div className="p-4 flex flex-col flex-grow">
               {/* Title */}
               <Link to={`/products/${product.id}`}>
-                <h3 className="font-semibold text-gray-900 text-base line-clamp-1 group-hover:text-indigo-600 transition-colors mb-1">
+                <h3 className="font-semibold text-[#d7a296] text-base line-clamp-1 group-hover:text-indigo-900 transition-colors mb-1">
                   {product.title}
                 </h3>
               </Link>
 
               {/* Price */}
-              <span className="text-indigo-600 font-bold text-base mb-4">
+              <span className="text-indigo-900 font-bold text-base mb-4">
                 AED {product.price}
               </span>
 
@@ -89,7 +89,7 @@ function Wishlist() {
                 <button
                   type="button"
                   onClick={() => addToCart(product)}
-                  className="w-full bg-gray-900 hover:bg-[#d7a296] text-white font-medium py-2 px-4 rounded-xl text-xs transition-colors duration-200 flex items-center justify-center gap-2 shadow-sm cursor-pointer"
+                  className="w-full bg-[#d9a79c] hover:bg-[#d7a296] text-white font-medium py-2 px-4 rounded-xl text-xs transition-colors duration-200 flex items-center justify-center gap-2 shadow-sm cursor-pointer"
                 >
                   <svg
                     className="w-4 h-4"

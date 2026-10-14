@@ -38,7 +38,7 @@ function Home() {
     <div className="mx-auto px-4 sm:px-4 lg:px-4 py-8">
       {/* 1. Loading State (Skeleton Grid) */}
       {loading && (
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 xl:grid-cols-7 gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 xl:grid-cols-5 xxl:grid-cols-7 gap-6">
           {Array.from({ length: 8 }).map((_, index) => (
             <div
               key={index}

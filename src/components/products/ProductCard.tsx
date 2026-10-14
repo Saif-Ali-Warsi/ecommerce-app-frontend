@@ -89,7 +89,7 @@ function ProductCard({ product }: ProductCardProps) {
                 event.stopPropagation();
                 addToCart(product);
               }}
-              className="cursor-pointer w-full bg-[#d7a296] hover:bg-[#d9a79c] text-white font-medium py-1.5 px-3 rounded-lg text-xs transition-colors duration-200 flex items-center justify-center gap-1.5 shadow-sm"
+              className="cursor-pointer w-full bg-[#d7a296] hover:bg-[#d9a79c] text-white font-bold py-1.5 px-3 rounded-lg text-xs border-2 border-[#8c5245] shadow-[4px_4px_0px_0px_#8c5245] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[2px_2px_0px_0px_#8c5245] transition-all flex items-center justify-center gap-1.5"
             >
               <svg
                 className="w-3.5 h-3.5"

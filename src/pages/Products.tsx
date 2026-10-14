@@ -155,7 +155,7 @@ function Products() {
       <div className="mx-auto px-4 sm:px-4 lg:px-4 py-4">
         {/* 1. Loading State (Skeleton Grid) */}
         {loading && (
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 xl:grid-cols-7 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 xl:grid-cols-5 xxl:grid-cols-7 gap-6">
             {Array.from({ length: 8 }).map((_, index) => (
               <div
                 key={index}
@@ -257,7 +257,7 @@ function Products() {
               type="button"
               disabled={currentPage === 1}
               onClick={() => setCurrentPage((page) => page - 1)}
-              className="flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-200 rounded-xl hover:bg-gray-50 hover:text-indigo-600 disabled:opacity-40 disabled:cursor-not-allowed transition-all shadow-sm"
+              className="cursor-pointer bg-[#d7a296] hover:bg-[#d9a79c] disabled:opacity-40 disabled:cursor-not-allowed text-white font-bold py-2 px-3 rounded-lg text-md border-2 border-[#8c5245] shadow-[4px_4px_0px_0px_#8c5245] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[2px_2px_0px_0px_#8c5245] transition-all flex items-center justify-center gap-1.5"
             >
               <svg
                 className="w-4 h-4"
@@ -286,7 +286,7 @@ function Products() {
               type="button"
               disabled={currentPage === totalPages}
               onClick={() => setCurrentPage((page) => page + 1)}
-              className="flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-200 rounded-xl hover:bg-gray-50 hover:text-indigo-600 disabled:opacity-40 disabled:cursor-not-allowed transition-all shadow-sm"
+              className="cursor-pointer bg-[#d7a296] hover:bg-[#d9a79c] disabled:opacity-40 disabled:cursor-not-allowed text-white font-bold py-2 px-3 rounded-lg text-md border-2 border-[#8c5245] shadow-[4px_4px_0px_0px_#8c5245] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[2px_2px_0px_0px_#8c5245] transition-all flex items-center justify-center gap-1.5"
             >
               Next
               <svg

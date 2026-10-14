@@ -65,10 +65,10 @@ function Header() {
 
               {/* Logo / Brand Name */}
               <Link to="/" className="flex items-center gap-2 group">
-                <div className="w-9 h-9 bg-[#d7a296] rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-md group-hover:bg-[#d9a79c] transition-colors">
+                <div className="cursor-pointer bg-[#d7a296] hover:bg-[#d9a79c] text-white font-bold py-1 px-1.5 rounded-lg text-md border-2 border-[#8c5245] shadow-[4px_4px_0px_0px_#8c5245] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[2px_2px_0px_0px_#8c5245] transition-all flex items-center justify-center gap-1.5">
                   S
                 </div>
-                <span className="text-xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
+                <span className="text-xl font-bold text-[#8c5245] bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text">
                   My Store
                 </span>
               </Link>
@@ -78,25 +78,25 @@ function Header() {
             <nav className="hidden md:flex items-center gap-8">
               <Link
                 to="/"
-                className="text-sm font-medium text-gray-700 hover:text-[#d9a79c] transition-colors"
+                className="text-sm text-[#8c5245] font-bold hover:text-[#d9a79c] transition-colors"
               >
                 Home
               </Link>
               <Link
                 to="/products"
-                className="text-sm font-medium text-gray-700 hover:text-[#d9a79c] transition-colors"
+                className="text-sm font-bold text-[#8c5245] hover:text-[#d9a79c] transition-colors"
               >
                 Products
               </Link>
               <Link
                 to="/categories"
-                className="text-sm font-medium text-gray-700 hover:text-[#d9a79c] transition-colors"
+                className="text-sm font-bold text-[#8c5245] hover:text-[#d9a79c] transition-colors"
               >
                 Categories
               </Link>
               <Link
                 to="/wishlist"
-                className="text-sm font-medium text-gray-700 hover:text-[#d9a79c] transition-colors"
+                className="text-sm font-bold text-[#8c5245] hover:text-[#d9a79c] transition-colors"
               >
                 Wishlist
               </Link>
@@ -216,10 +216,10 @@ function Header() {
               {/* Login Button */}
               {isAuthenticated ? (
                 <>
-                  <span>Welcome, {user?.firstName}</span>{" "}
+                  <span className="font-bold text-[#8c5245]">Welcome, {user?.firstName}</span>{" "}
                   <button
                     onClick={logout}
-                    className="cursor-pointer px-4 py-2 text-sm font-medium text-white bg-red-700 hover:bg-[#d7a296] rounded-xl transition-all duration-200 shadow-sm hover:shadow-md"
+                    className="cursor-pointer bg-[#d7a296] hover:bg-[#d9a79c] text-white font-bold py-2 px-3 rounded-lg text-md border-2 border-[#8c5245] shadow-[4px_4px_0px_0px_#8c5245] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[2px_2px_0px_0px_#8c5245] transition-all flex items-center justify-center gap-1.5"
                   >
                     Logout
                   </button>
@@ -227,7 +227,7 @@ function Header() {
               ) : (
                 <Link
                   to="/login"
-                  className="cursor-pointer px-4 py-2 text-sm font-medium text-white bg-[#d7a296] hover:bg-[#d7a296] rounded-xl transition-all duration-200 shadow-sm hover:shadow-md"
+                  className="cursor-pointer bg-[#d7a296] hover:bg-[#d9a79c] text-white font-bold py-2 px-3 rounded-lg text-md border-2 border-[#8c5245] shadow-[4px_4px_0px_0px_#8c5245] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[2px_2px_0px_0px_#8c5245] transition-all flex items-center justify-center gap-1.5"
                 >
                   Login
                 </Link>
@@ -295,7 +295,7 @@ function Header() {
                 <Link
                   to="/login"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="block w-full text-center px-4 py-2.5 text-sm font-medium text-white bg-[#d7a296] rounded-xl"
+                  className="block w-full cursor-pointer bg-[#d7a296] hover:bg-[#d9a79c] text-white font-bold py-2 px-3 rounded-lg text-md border-2 border-[#8c5245] shadow-[4px_4px_0px_0px_#8c5245] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[2px_2px_0px_0px_#8c5245] transition-all flex items-center justify-center gap-1.5"
                 >
                   Logout
                 </Link>
@@ -303,7 +303,7 @@ function Header() {
                 <Link
                   to="/login"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="block w-full text-center px-4 py-2.5 text-sm font-medium text-white bg-[#d7a296] rounded-xl"
+                  className="block w-full cursor-pointer bg-[#d7a296] hover:bg-[#d9a79c] text-white font-bold py-2 px-3 rounded-lg text-md border-2 border-[#8c5245] shadow-[4px_4px_0px_0px_#8c5245] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[2px_2px_0px_0px_#8c5245] transition-all flex items-center justify-center gap-1.5"
                 >
                   Login
                 </Link>

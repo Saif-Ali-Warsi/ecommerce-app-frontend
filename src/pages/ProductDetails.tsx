@@ -114,17 +114,17 @@ function ProductDetails() {
         <div className="flex flex-col">
           {/* Category & Brand */}
           <div className="flex items-center gap-2 mb-2">
-            <span className="text-xs font-semibold uppercase tracking-wider text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-md">
+            <span className="text-xs font-semibold uppercase tracking-wider text-[#8c5245] bg-indigo-50 px-2.5 py-1 rounded-md">
               {product.category}
             </span>
             <span className="text-sm text-gray-400">•</span>
-            <span className="text-sm font-medium text-gray-600">
+            <span className="text-sm font-medium text-[#8c5245]">
               Brand: <strong className="text-gray-900">{product.brand}</strong>
             </span>
           </div>
 
           {/* Title */}
-          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3">
+          <h1 className="text-2xl sm:text-3xl font-bold text-[#8c5245] mb-3">
             {product.title}
           </h1>
 
@@ -134,7 +134,7 @@ function ProductDetails() {
               <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
                 <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
               </svg>
-              <span className="text-sm font-bold text-gray-900">
+              <span className="text-sm font-bold text-[#8c5245]">
                 {product.rating}
               </span>
               <span className="text-xs text-gray-400">
@@ -155,18 +155,18 @@ function ProductDetails() {
 
           {/* Pricing */}
           <div className="flex items-baseline gap-3 mb-6 p-4 bg-gray-50 rounded-2xl border border-gray-100">
-            <span className="text-3xl font-extrabold text-gray-900">
-              ${discountedPrice}
+            <span className="text-3xl font-extrabold text-[#8c5245]">
+              AED {discountedPrice}
             </span>
             {product.discountPercentage > 0 && (
               <span className="text-lg text-gray-400 line-through font-medium">
-                ${product.price}
+                AED {product.price}
               </span>
             )}
           </div>
 
           {/* Description */}
-          <p className="text-gray-600 text-sm leading-relaxed mb-6">
+          <p className="text-[#8c5245] text-sm leading-relaxed mb-6">
             {product.description}
           </p>
 
@@ -176,7 +176,7 @@ function ProductDetails() {
               {product.tags.map((tag, idx) => (
                 <span
                   key={idx}
-                  className="text-xs bg-gray-100 text-gray-600 px-3 py-1 rounded-lg"
+                  className="text-xs bg-gray-100 text-[#8c5245] px-3 py-1 rounded-lg"
                 >
                   #{tag}
                 </span>
@@ -197,29 +197,29 @@ function ProductDetails() {
                       Math.max(product.minimumOrderQuantity || 1, quantity - 1),
                     )
                   }
-                  className="px-3 py-2 text-gray-600 hover:bg-gray-100 transition-colors"
+                  className="cursor-pointer px-3 py-2 text-gray-600 hover:bg-gray-100 transition-colors"
                 >
                   -
                 </button>
-                <span className="px-4 py-2 text-sm font-semibold text-gray-900">
+                <span className="px-4 py-2 text-sm font-semibold text-[#8c5245]">
                   {quantity}
                 </span>
                 <button
                   onClick={() => setQuantity(quantity + 1)}
-                  className="px-3 py-2 text-gray-600 hover:bg-gray-100 transition-colors"
+                  className="cursor-pointer px-3 py-2 text-gray-600 hover:bg-gray-100 transition-colors"
                 >
                   +
                 </button>
               </div>
               {product.minimumOrderQuantity > 1 && (
-                <span className="text-xs text-gray-400">
+                <span className="text-xs text-[#8c5245]">
                   (Min. order: {product.minimumOrderQuantity})
                 </span>
               )}
             </div>
 
             <div className="flex gap-4">
-              <button onClick={()=>{addToCart(product);}} className="cursor-pointer flex-1 bg-[#d7a296] hover:bg-[#d9a79c] text-white font-medium py-3 px-6 rounded-xl transition-all shadow-sm flex items-center justify-center gap-2">
+              <button onClick={()=>{addToCart(product);}} className="cursor-pointer w-full bg-[#d7a296] hover:bg-[#d9a79c] text-white font-bold py-5 px-3 rounded-lg text-md border-2 border-[#8c5245] shadow-[4px_4px_0px_0px_#8c5245] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[2px_2px_0px_0px_#8c5245] transition-all flex items-center justify-center gap-1.5">
                 <svg
                   className="w-5 h-5"
                   fill="none"
@@ -239,7 +239,7 @@ function ProductDetails() {
           </div>
 
           {/* Additional Meta Specs Grid */}
-          <div className="grid grid-cols-2 gap-4 pt-6 border-t border-gray-100 text-xs text-gray-500">
+          <div className="grid grid-cols-2 gap-4 pt-6 border-t border-gray-100 text-xs text-[#8c5245]">
             <div>
               <strong className="text-gray-700">SKU:</strong> {product.sku}
             </div>
@@ -288,7 +288,7 @@ function ProductDetails() {
                   </p>
                 </div>
                 <div className="text-xs text-gray-500">
-                  <span className="font-semibold text-gray-900 block">
+                  <span className="font-semibold text-[#8c5245] block">
                     {review.reviewerName}
                   </span>
                   <span>{new Date(review.date).toLocaleDateString()}</span>
