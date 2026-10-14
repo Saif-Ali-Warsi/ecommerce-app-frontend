@@ -37,10 +37,10 @@ function Login() {
       setIsLoggedIn(true);
 
       navigate("/");
-      toast.success("sds");
+      toast.success("Login successful");
     } catch (error) {
       setErrorMessage("Invalid username or password. Please try again.");
-      toast.error("sds")
+      toast.error("Invalid email or password.");
     }
   }
 
