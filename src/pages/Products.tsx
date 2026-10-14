@@ -84,28 +84,29 @@ const Products = memo(function Products() {
     loadCategories();
   }, []);
 
-  return (
+return (
     <>
-      <div className="flex items-center">
-        <div className="p-4 relative">
+      {/* Filter and Sort Controls */}
+      <div className="flex items-center gap-4 px-4 py-2">
+        <div className="p-2 relative">
           <select
             value={selectedCategory}
             onChange={(event) => {
               setSelectedCategory(event.target.value);
               setCurrentPage(1);
             }}
-            className="w-full appearance-none bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-xl px-4 py-2.5 pr-10 focus:outline-none focus:bg-white focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 transition-all cursor-pointer"
+            className="w-full appearance-none bg-[#191C24] text-[#CFD4DC] text-sm rounded-xl px-4 py-2.5 pr-10 focus:outline-none shadow-[inset_2px_2px_5px_#101217,inset_-2px_-2px_5px_#222631] transition-all cursor-pointer"
           >
-            <option value="">All Categories</option>
+            <option value="" className="bg-[#191C24] text-[#CFD4DC]">All Categories</option>
             {categories.map((category) => (
-              <option key={category} value={category}>
+              <option key={category} value={category} className="bg-[#191C24] text-[#CFD4DC]">
                 {category}
               </option>
             ))}
           </select>
 
           {/* Custom Dropdown Arrow Icon */}
-          <div className="absolute inset-y-0 right-5 flex items-center pr-3 pointer-events-none text-gray-400">
+          <div className="absolute inset-y-0 right-5 flex items-center pr-3 pointer-events-none text-[#535C6D]">
             <svg
               className="w-4 h-4"
               fill="none"
@@ -122,21 +123,21 @@ const Products = memo(function Products() {
           </div>
         </div>
 
-        <div className="p-4 relative">
+        <div className="p-2 relative">
           <select
             value={sortBy}
             onChange={(event) => setSortBy(event.target.value)}
-            className="w-full appearance-none bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-xl px-4 py-2.5 pr-10 focus:outline-none focus:bg-white focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 transition-all cursor-pointer"
+            className="w-full appearance-none bg-[#191C24] text-[#CFD4DC] text-sm rounded-xl px-4 py-2.5 pr-10 focus:outline-none shadow-[inset_2px_2px_5px_#101217,inset_-2px_-2px_5px_#222631] transition-all cursor-pointer"
           >
-            <option value="default">Default</option>
-            <option value="price-low">Price: Low to High</option>
-            <option value="price-high">Price: High to Low</option>
-            <option value="name-asc">Name: A to Z</option>
-            <option value="name-desc">Name: Z to A</option>
+            <option value="default" className="bg-[#191C24] text-[#CFD4DC]">Default</option>
+            <option value="price-low" className="bg-[#191C24] text-[#CFD4DC]">Price: Low to High</option>
+            <option value="price-high" className="bg-[#191C24] text-[#CFD4DC]">Price: High to Low</option>
+            <option value="name-asc" className="bg-[#191C24] text-[#CFD4DC]">Name: A to Z</option>
+            <option value="name-desc" className="bg-[#191C24] text-[#CFD4DC]">Name: Z to A</option>
           </select>
 
           {/* Custom Dropdown Arrow Icon */}
-          <div className="absolute inset-y-0 right-5 flex items-center pr-3 pointer-events-none text-gray-400">
+          <div className="absolute inset-y-0 right-5 flex items-center pr-3 pointer-events-none text-[#535C6D]">
             <svg
               className="w-4 h-4"
               fill="none"
@@ -155,31 +156,31 @@ const Products = memo(function Products() {
       </div>
 
       <div className="mx-auto px-4 sm:px-4 lg:px-4 py-4">
-        {/* 1. Loading State (Skeleton Grid) */}
+        {/* 1. Loading State (Neomorphic Skeleton Grid) */}
         {loading && (
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 xl:grid-cols-5 xxl:grid-cols-7 gap-6">
             {Array.from({ length: 8 }).map((_, index) => (
               <div
                 key={index}
-                className="bg-white rounded-2xl border border-gray-100 p-4 shadow-sm animate-pulse flex flex-col"
+                className="bg-[#191C24] rounded-2xl p-4 shadow-[-6px_-6px_14px_#222631,6px_6px_14px_#101217] animate-pulse flex flex-col"
               >
-                {/* Image Placeholder */}
-                <div className="w-full h-56 bg-gray-200 rounded-xl mb-4"></div>
+                {/* Image Placeholder (Recessed) */}
+                <div className="w-full h-56 bg-[#191C24] rounded-xl mb-4 shadow-[inset_2px_2px_5px_#101217,inset_-2px_-2px_5px_#222631]"></div>
 
                 {/* Title & Price Placeholder */}
                 <div className="flex justify-between items-center mb-3">
-                  <div className="h-5 bg-gray-200 rounded w-1/2"></div>
-                  <div className="h-5 bg-gray-200 rounded w-1/4"></div>
+                  <div className="h-4 bg-[#222631] rounded-lg w-1/2 shadow-[inset_1px_1px_2px_#101217]"></div>
+                  <div className="h-4 bg-[#222631] rounded-lg w-1/4 shadow-[inset_1px_1px_2px_#101217]"></div>
                 </div>
 
                 {/* Description Lines Placeholder */}
                 <div className="space-y-2 mb-6">
-                  <div className="h-3.5 bg-gray-200 rounded w-full"></div>
-                  <div className="h-3.5 bg-gray-200 rounded w-4/5"></div>
+                  <div className="h-3 bg-[#222631] rounded-lg w-full shadow-[inset_1px_1px_2px_#101217]"></div>
+                  <div className="h-3 bg-[#222631] rounded-lg w-4/5 shadow-[inset_1px_1px_2px_#101217]"></div>
                 </div>
 
                 {/* Button Placeholder */}
-                <div className="h-10 bg-gray-200 rounded-xl w-full mt-auto"></div>
+                <div className="h-9 bg-[#191C24] rounded-xl w-full mt-auto shadow-[-3px_-3px_6px_#222631,3px_3px_6px_#101217]"></div>
               </div>
             ))}
           </div>
@@ -187,8 +188,8 @@ const Products = memo(function Products() {
 
         {/* 2. Error State */}
         {!loading && error && (
-          <div className="max-w-md mx-auto my-12 p-6 bg-red-50 border border-red-100 rounded-2xl text-center shadow-sm">
-            <div className="w-12 h-12 bg-red-100 text-red-600 rounded-full flex items-center justify-center mx-auto mb-3">
+          <div className="max-w-md mx-auto my-12 p-6 bg-[#191C24] rounded-2xl text-center shadow-[-8px_-8px_20px_#222631,8px_8px_20px_#101217]">
+            <div className="w-12 h-12 bg-[#191C24] text-red-400 rounded-full flex items-center justify-center mx-auto mb-3 shadow-[inset_2px_2px_5px_#101217,inset_-2px_-2px_5px_#222631]">
               <svg
                 className="w-6 h-6"
                 fill="none"
@@ -203,13 +204,13 @@ const Products = memo(function Products() {
                 />
               </svg>
             </div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-1">
+            <h3 className="text-lg font-semibold text-[#CFD4DC] mb-1">
               Failed to load products
             </h3>
-            <p className="text-sm text-red-600 mb-4">{error}</p>
+            <p className="text-sm text-red-400 mb-4">{error}</p>
             <button
               onClick={() => window.location.reload()}
-              className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white text-sm font-medium rounded-xl transition-colors shadow-sm"
+              className="px-5 py-2 bg-[#191C24] hover:bg-[#222631] text-red-400 text-sm font-bold rounded-xl transition-all shadow-[-4px_-4px_10px_#222631,4px_4px_10px_#101217] active:shadow-[inset_2px_2px_4px_#101217,inset_-2px_-2px_4px_#222631]"
             >
               Try Again
             </button>
@@ -219,7 +220,7 @@ const Products = memo(function Products() {
         {/* 3. Empty State (No Products Found) */}
         {!loading && !error && products.length === 0 && (
           <div className="text-center py-16">
-            <div className="w-16 h-16 bg-gray-100 text-gray-400 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="w-16 h-16 bg-[#191C24] text-[#8A93A5] rounded-full flex items-center justify-center mx-auto mb-4 shadow-[inset_2px_2px_5px_#101217,inset_-2px_-2px_5px_#222631]">
               <svg
                 className="w-8 h-8"
                 fill="none"
@@ -234,10 +235,10 @@ const Products = memo(function Products() {
                 />
               </svg>
             </div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-1">
+            <h3 className="text-lg font-semibold text-[#CFD4DC] mb-1">
               No products found
             </h3>
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-[#8A93A5]">
               Check back later or try adjusting your search filters.
             </p>
           </div>
@@ -252,6 +253,7 @@ const Products = memo(function Products() {
           </div>
         )}
 
+        {/* Pagination Controls */}
         {!loading && !error && totalPages > 1 && (
           <div className="flex items-center justify-end gap-4 my-8">
             {/* Previous Button */}
@@ -259,7 +261,7 @@ const Products = memo(function Products() {
               type="button"
               disabled={currentPage === 1}
               onClick={() => setCurrentPage((page) => page - 1)}
-              className="cursor-pointer bg-[#d7a296] hover:bg-[#d9a79c] disabled:opacity-40 disabled:cursor-not-allowed text-white font-bold py-2 px-3 rounded-lg text-md border-2 border-[#8c5245] shadow-[4px_4px_0px_0px_#8c5245] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[2px_2px_0px_0px_#8c5245] transition-all flex items-center justify-center gap-1.5"
+              className="cursor-pointer bg-[#191C24] hover:bg-[#222631] disabled:opacity-40 disabled:cursor-not-allowed text-[#d9a79c] font-bold py-2.5 px-4 rounded-xl text-sm shadow-[-4px_-4px_10px_#222631,4px_4px_10px_#101217] active:shadow-[inset_2px_2px_4px_#101217,inset_-2px_-2px_4px_#222631] transition-all flex items-center justify-center gap-1.5"
             >
               <svg
                 className="w-4 h-4"
@@ -278,9 +280,9 @@ const Products = memo(function Products() {
             </button>
 
             {/* Page Indicator */}
-            <span className="text-sm font-medium text-gray-600 px-2">
-              Page <strong className="text-gray-900">{currentPage}</strong> of{" "}
-              <strong className="text-gray-900">{totalPages}</strong>
+            <span className="text-sm font-medium text-[#8A93A5] px-3 py-2 rounded-xl bg-[#191C24] shadow-[inset_2px_2px_4px_#101217,inset_-2px_-2px_4px_#222631]">
+              Page <strong className="text-[#CFD4DC]">{currentPage}</strong> of{" "}
+              <strong className="text-[#CFD4DC]">{totalPages}</strong>
             </span>
 
             {/* Next Button */}
@@ -288,7 +290,7 @@ const Products = memo(function Products() {
               type="button"
               disabled={currentPage === totalPages}
               onClick={() => setCurrentPage((page) => page + 1)}
-              className="cursor-pointer bg-[#d7a296] hover:bg-[#d9a79c] disabled:opacity-40 disabled:cursor-not-allowed text-white font-bold py-2 px-3 rounded-lg text-md border-2 border-[#8c5245] shadow-[4px_4px_0px_0px_#8c5245] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[2px_2px_0px_0px_#8c5245] transition-all flex items-center justify-center gap-1.5"
+              className="cursor-pointer bg-[#191C24] hover:bg-[#222631] disabled:opacity-40 disabled:cursor-not-allowed text-[#d9a79c] font-bold py-2.5 px-4 rounded-xl text-sm shadow-[-4px_-4px_10px_#222631,4px_4px_10px_#101217] active:shadow-[inset_2px_2px_4px_#101217,inset_-2px_-2px_4px_#222631] transition-all flex items-center justify-center gap-1.5"
             >
               Next
               <svg

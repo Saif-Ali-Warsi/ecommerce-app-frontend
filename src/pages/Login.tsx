@@ -50,7 +50,7 @@ function Login() {
       setIsLoggedIn(true);
 
       navigate("/");
-      toast.success("Login successful");
+      toast.success("Login Successful");
     } catch (error) {
       setErrorMessage("Invalid username or password. Please try again.");
       toast.error("Invalid email or password.");
@@ -59,30 +59,30 @@ function Login() {
     }
   }
 
-  return (
-    <div className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8 bg-white p-8 rounded-xl shadow-lg border border-gray-100">
+return (
+    <div className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-[#191C24]">
+      <div className="max-w-md w-full space-y-8 bg-[#191C24] p-8 rounded-3xl shadow-[12px_12px_24px_#101217,-12px_-12px_24px_#222631] border-0">
         {/* Header */}
         <div className="text-center">
-          <h2 className="text-3xl font-extrabold text-[#d9a79c] tracking-tight">
+          <h2 className="text-3xl font-extrabold text-[#d9a79c] tracking-tight drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
             Welcome Back
           </h2>
-          <p className="mt-2 text-sm text-gray-600">
+          <p className="mt-2 text-sm text-[#8A93A5] drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)]">
             Please sign in to your account
           </p>
         </div>
 
         {/* Global Error Message */}
         {errorMessage && (
-          <div className="bg-red-50 border-l-4 border-red-400 p-4 rounded-md">
-            <p className="text-sm text-red-700">{errorMessage}</p>
+          <div className="bg-[#191C24] shadow-[inset_2px_2px_5px_#101217,inset_-3px_-3px_7px_#222631] p-4 rounded-xl border border-red-500/20">
+            <p className="text-sm text-red-400 font-medium">{errorMessage}</p>
           </div>
         )}
 
         {/* Success Message */}
         {isLoggedIn && (
-          <div className="bg-green-50 border-l-4 border-green-400 p-4 rounded-md">
-            <p className="text-sm text-green-700 font-medium">
+          <div className="bg-[#191C24] shadow-[inset_2px_2px_5px_#101217,inset_-3px_-3px_7px_#222631] p-4 rounded-xl border border-green-500/20">
+            <p className="text-sm text-green-400 font-medium">
               Login Successful! Redirecting...
             </p>
           </div>
@@ -90,24 +90,24 @@ function Login() {
 
         {/* Form */}
         <form className="mt-8 space-y-6" onSubmit={handleSubmit(onSubmit)}>
-          <div className="space-y-4">
+          <div className="space-y-6">
             {/* Username Field */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-semibold text-[#8A93A5] mb-2 drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)]">
                 Username
               </label>
               <input
                 {...register("username")}
                 type="text"
                 placeholder="Enter your username"
-                className={`w-full px-4 py-2.5 bg-gray-50 border rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:bg-white focus:ring-2 transition-all ${
+                className={`w-full px-5 py-3.5 bg-[#191C24] rounded-2xl text-sm text-[#CFD4DC] placeholder-[#535C6D] focus:outline-none transition-all ${
                   errors.username
-                    ? "border-red-500 focus:border-red-500 focus:ring-red-500/20"
-                    : "border-gray-200 focus:border-[#d9a79c] focus:ring-[#d9a79c]"
+                    ? "shadow-[inset_2px_2px_5px_#EF4444,inset_-2px_-2px_5px_#222631]"
+                    : "shadow-[inset_3px_3px_6px_#101217,inset_-3px_-3px_6px_#222631] focus:shadow-[inset_1px_1px_2px_#101217,inset_-1px_-1px_2px_#222631]"
                 }`}
               />
               {errors.username && (
-                <p className="mt-1 text-xs text-red-600">
+                <p className="mt-1.5 text-xs text-red-400 font-medium">
                   {errors.username.message}
                 </p>
               )}
@@ -115,21 +115,21 @@ function Login() {
 
             {/* Password Field */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-semibold text-[#8A93A5] mb-2 drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)]">
                 Password
               </label>
               <input
                 {...register("password")}
                 type="password"
                 placeholder="Enter your password"
-                className={`w-full px-4 py-2.5 bg-gray-50 border rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:bg-white focus:ring-2 transition-all ${
+                className={`w-full px-5 py-3.5 bg-[#191C24] rounded-2xl text-sm text-[#CFD4DC] placeholder-[#535C6D] focus:outline-none transition-all ${
                   errors.password
-                    ? "border-red-500 focus:border-red-500 focus:ring-red-500/20"
-                    : "border-gray-200 focus:border-[#d9a79c] focus:ring-[#d9a79c]"
+                    ? "shadow-[inset_2px_2px_5px_#EF4444,inset_-2px_-2px_5px_#222631]"
+                    : "shadow-[inset_3px_3px_6px_#101217,inset_-3px_-3px_6px_#222631] focus:shadow-[inset_1px_1px_2px_#101217,inset_-1px_-1px_2px_#222631]"
                 }`}
               />
               {errors.password && (
-                <p className="mt-1 text-xs text-red-600">
+                <p className="mt-1.5 text-xs text-red-400 font-medium">
                   {errors.password.message}
                 </p>
               )}
@@ -139,7 +139,7 @@ function Login() {
           {/* Submit Button */}
           <button
             type="submit"
-            className="cursor-pointer w-full bg-[#d7a296] hover:bg-[#d9a79c] text-white font-bold py-5 px-3 rounded-lg text-md border-2 border-[#8c5245] shadow-[4px_4px_0px_0px_#8c5245] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[2px_2px_0px_0px_#8c5245] transition-all flex items-center justify-center gap-1.5"
+            className="cursor-pointer w-full bg-[#191C24] text-[#d9a79c] font-bold py-4 px-4 rounded-2xl text-md shadow-[-6px_-6px_16px_#222631,6px_6px_16px_#101217] hover:shadow-[-3px_-3px_8px_#222631,3px_3px_8px_#101217] active:shadow-[inset_2px_2px_5px_#101217,inset_-2px_-2px_5px_#222631] transition-all flex items-center justify-center gap-1.5 mt-4"
           >
             {loading ? "Processing.." : "Sign In"}
           </button>

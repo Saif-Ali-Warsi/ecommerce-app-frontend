@@ -30,14 +30,14 @@ function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100 transition-all">
+      <header className="sticky top-0 z-50 bg-[#191C24]/90 backdrop-blur-md border-b border-[#222631] transition-all">
         <div className="max-w-7xl mx-auto px-4 sm:px-4 lg:px-4">
           <div className="flex items-center justify-between h-16">
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between gap-4">
               {/* Mobile Menu Button */}
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="md:hidden p-2 rounded-lg text-gray-600 hover:bg-gray-100 focus:outline-none"
+                className="md:hidden p-2 rounded-xl text-[#8A93A5] bg-[#191C24] shadow-[-3px_-3px_8px_#222631,3px_3px_8px_#101217] active:shadow-[inset_2px_2px_5px_#101217,inset_-2px_-2px_5px_#222631] focus:outline-none transition-all"
                 aria-label="Toggle navigation menu"
               >
                 <svg
@@ -65,10 +65,10 @@ function Header() {
 
               {/* Logo / Brand Name */}
               <Link to="/" className="flex items-center gap-2 group">
-                <div className="cursor-pointer bg-[#d7a296] hover:bg-[#d9a79c] text-white font-bold py-1 px-1.5 rounded-lg text-md border-2 border-[#8c5245] shadow-[4px_4px_0px_0px_#8c5245] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[2px_2px_0px_0px_#8c5245] transition-all flex items-center justify-center gap-1.5">
+                <div className="cursor-pointer bg-[#191C24] text-[#d9a79c] font-bold py-1.5 px-3 rounded-xl text-md shadow-[-4px_-4px_10px_#222631,4px_4px_10px_#101217] active:shadow-[inset_2px_2px_4px_#101217,inset_-2px_-2px_4px_#222631] transition-all flex items-center justify-center">
                   S
                 </div>
-                <span className="text-xl font-bold text-[#8c5245] bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text">
+                <span className="text-xl font-bold text-[#CFD4DC] drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
                   My Store
                 </span>
               </Link>
@@ -78,35 +78,35 @@ function Header() {
             <nav className="hidden md:flex items-center gap-8">
               <Link
                 to="/"
-                className="text-sm text-[#8c5245] font-bold hover:text-[#d9a79c] transition-colors"
+                className="text-sm text-[#8A93A5] font-semibold hover:text-[#d9a79c] transition-colors drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)]"
               >
                 Home
               </Link>
               <Link
                 to="/products"
-                className="text-sm font-bold text-[#8c5245] hover:text-[#d9a79c] transition-colors"
+                className="text-sm font-semibold text-[#8A93A5] hover:text-[#d9a79c] transition-colors drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)]"
               >
                 Products
               </Link>
               <Link
                 to="/categories"
-                className="text-sm font-bold text-[#8c5245] hover:text-[#d9a79c] transition-colors"
+                className="text-sm font-semibold text-[#8A93A5] hover:text-[#d9a79c] transition-colors drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)]"
               >
                 Categories
               </Link>
               <Link
                 to="/wishlist"
-                className="text-sm font-bold text-[#8c5245] hover:text-[#d9a79c] transition-colors"
+                className="text-sm font-semibold text-[#8A93A5] hover:text-[#d9a79c] transition-colors drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)]"
               >
                 Wishlist
               </Link>
             </nav>
 
             {/* Search */}
-            <div className="">
+            <div className="hidden lg:block w-72">
               <div className="relative w-full">
                 {/* Search Icon */}
-                <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400">
+                <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#535C6D]">
                   <svg
                     className="w-4 h-4"
                     fill="none"
@@ -129,14 +129,14 @@ function Header() {
                     placeholder="Search products..."
                     value={searchTerm}
                     onChange={(event) => setSearchTerm(event.target.value)}
-                    className="w-full pl-10 pr-10 py-2.5 bg-gray-50 border border-[#d9a79c] rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:bg-white focus:border-[#d9a79c] focus:ring-2 focus:ring-[#d9a79c] transition-all duration-200"
+                    className="w-full pl-10 pr-10 py-2 bg-[#191C24] rounded-xl text-sm text-[#CFD4DC] placeholder-[#535C6D] focus:outline-none shadow-[inset_2px_2px_5px_#101217,inset_-2px_-2px_5px_#222631] focus:shadow-[inset_1px_1px_2px_#101217,inset_-1px_-1px_2px_#222631] transition-all duration-200"
                   />
 
-                  {/* Clear Input Button (Visible only when text exists) */}
+                  {/* Clear Input Button */}
                   {searchTerm && (
                     <button
                       type="submit"
-                      className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600"
+                      className="absolute inset-y-0 right-0 pr-3 flex items-center text-[#535C6D] hover:text-[#CFD4DC]"
                       aria-label="Clear search"
                     >
                       <svg
@@ -163,11 +163,11 @@ function Header() {
               {/* Cart Button with Badge */}
               <Link
                 to="/cart"
-                className="relative p-2 text-[#d7a296] hover:text-[#d9a79c] transition-colors"
+                className="relative p-2.5 bg-[#191C24] text-[#d9a79c] rounded-xl shadow-[-3px_-3px_8px_#222631,3px_3px_8px_#101217] hover:shadow-[-1px_-1px_4px_#222631,1px_1px_4px_#101217] active:shadow-[inset_1px_1px_2px_#101217,inset_-1px_-1px_2px_#222631] transition-all"
                 aria-label="Shopping Cart"
               >
                 <svg
-                  className="w-6 h-6"
+                  className="w-5 h-5"
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="2"
@@ -180,19 +180,18 @@ function Header() {
                   />
                 </svg>
                 {/* Badge Counter */}
-                <span className="absolute top-1 right-1 w-4 h-4 bg-[#d7a296] text-white text-[10px] font-bold rounded-full flex items-center justify-center">
+                <span className="absolute -top-1 -right-1 w-5 h-5 bg-[#d9a79c] text-[#191C24] text-[10px] font-extrabold rounded-full flex items-center justify-center shadow-md">
                   {cartQuantity}
                 </span>
               </Link>
 
               <Link
                 to="/wishlist"
-                className="relative p-2 text-[#d7a296] hover:text-[#d9a79c] transition-colors"
+                className="relative p-2.5 bg-[#191C24] text-[#d9a79c] rounded-xl shadow-[-3px_-3px_8px_#222631,3px_3px_8px_#101217] hover:shadow-[-1px_-1px_4px_#222631,1px_1px_4px_#101217] active:shadow-[inset_1px_1px_2px_#101217,inset_-1px_-1px_2px_#222631] transition-all"
                 aria-label="Wishlist"
               >
-                {/* Heart Icon for Wishlist */}
                 <svg
-                  className="w-6 h-6"
+                  className="w-5 h-5"
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="2"
@@ -204,30 +203,31 @@ function Header() {
                     d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"
                   />
                 </svg>
-
                 {/* Wishlist Badge Counter */}
-                <span className="absolute top-1 right-1 w-4 h-4 bg-[#d7a296] text-white text-[10px] font-bold rounded-full flex items-center justify-center">
+                <span className="absolute -top-1 -right-1 w-5 h-5 bg-[#d9a79c] text-[#191C24] text-[10px] font-extrabold rounded-full flex items-center justify-center shadow-md">
                   {wishlistCount}
                 </span>
               </Link>
-              
-              |
+
+              <div className="h-6 w-[1px] bg-[#222631]"></div>
 
               {/* Login Button */}
               {isAuthenticated ? (
-                <>
-                  <span className="font-bold text-[#8c5245]">Welcome, {user?.firstName}</span>{" "}
+                <div className="flex items-center gap-3">
+                  <span className="font-semibold text-sm text-[#8A93A5]">
+                    Hi, {user?.firstName}
+                  </span>
                   <button
                     onClick={logout}
-                    className="cursor-pointer bg-[#d7a296] hover:bg-[#d9a79c] text-white font-bold py-2 px-3 rounded-lg text-md border-2 border-[#8c5245] shadow-[4px_4px_0px_0px_#8c5245] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[2px_2px_0px_0px_#8c5245] transition-all flex items-center justify-center gap-1.5"
+                    className="cursor-pointer bg-[#191C24] text-[#d9a79c] font-bold py-2 px-4 rounded-xl text-sm shadow-[-4px_-4px_10px_#222631,4px_4px_10px_#101217] hover:shadow-[-2px_-2px_5px_#222631,2px_2px_5px_#101217] active:shadow-[inset_2px_2px_4px_#101217,inset_-2px_-2px_4px_#222631] transition-all flex items-center justify-center gap-1.5"
                   >
                     Logout
                   </button>
-                </>
+                </div>
               ) : (
                 <Link
                   to="/login"
-                  className="cursor-pointer bg-[#d7a296] hover:bg-[#d9a79c] text-white font-bold py-2 px-3 rounded-lg text-md border-2 border-[#8c5245] shadow-[4px_4px_0px_0px_#8c5245] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[2px_2px_0px_0px_#8c5245] transition-all flex items-center justify-center gap-1.5"
+                  className="cursor-pointer bg-[#191C24] text-[#d9a79c] font-bold py-2 px-5 rounded-xl text-sm shadow-[-4px_-4px_10px_#222631,4px_4px_10px_#101217] hover:shadow-[-2px_-2px_5px_#222631,2px_2px_5px_#101217] active:shadow-[inset_2px_2px_4px_#101217,inset_-2px_-2px_4px_#222631] transition-all flex items-center justify-center gap-1.5"
                 >
                   Login
                 </Link>
@@ -238,72 +238,89 @@ function Header() {
 
         {/* Mobile Dropdown Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden border-t border-gray-100 bg-white px-4 pt-2 pb-4 space-y-2">
-            <div>
+          <div className="md:hidden border-t border-[#222631] bg-[#191C24] px-4 pt-4 pb-6 space-y-3 shadow-[inset_0_4px_6px_-2px_rgba(0,0,0,0.3)]">
+            <div className="px-3 py-2 text-sm font-medium text-[#8A93A5] bg-[#191C24] rounded-xl shadow-[inset_2px_2px_5px_#101217,inset_-2px_-2px_5px_#222631]">
               Welcome,{" "}
               {isAuthenticated ? (
-                <span> {user?.firstName}</span>
+                <span className="text-[#CFD4DC] font-semibold">
+                  {user?.firstName}
+                </span>
               ) : (
-                <span>Guest</span>
+                <span className="text-[#CFD4DC] font-semibold">Guest</span>
               )}
             </div>
+
+            {/* Mobile Search Input */}
+            <div className="relative w-full pt-1">
+              <form onSubmit={handleSearch}>
+                <input
+                  type="search"
+                  placeholder="Search products..."
+                  value={searchTerm}
+                  onChange={(event) => setSearchTerm(event.target.value)}
+                  className="w-full px-4 py-2 bg-[#191C24] rounded-xl text-sm text-[#CFD4DC] placeholder-[#535C6D] focus:outline-none shadow-[inset_2px_2px_5px_#101217,inset_-2px_-2px_5px_#222631]"
+                />
+              </form>
+            </div>
+
             <Link
               to="/"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-[#d9a79c]"
+              className="block px-3 py-2.5 rounded-xl text-base font-medium text-[#8A93A5] hover:bg-[#191C24] hover:text-[#d9a79c] shadow-[-2px_-2px_5px_#222631,2px_2px_5px_#101217]"
             >
               Home
             </Link>
             <Link
               to="/products"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-[#d9a79c]"
+              className="block px-3 py-2.5 rounded-xl text-base font-medium text-[#8A93A5] hover:bg-[#191C24] hover:text-[#d9a79c] shadow-[-2px_-2px_5px_#222631,2px_2px_5px_#101217]"
             >
               Products
             </Link>
             <Link
               to="/categories"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-[#d9a79c]"
+              className="block px-3 py-2.5 rounded-xl text-base font-medium text-[#8A93A5] hover:bg-[#191C24] hover:text-[#d9a79c] shadow-[-2px_-2px_5px_#222631,2px_2px_5px_#101217]"
             >
               Categories
             </Link>
             <Link
               to="/cart"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="flex items-center justify-between px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-[#d9a79c]"
+              className="flex items-center justify-between px-3 py-2.5 rounded-xl text-base font-medium text-[#8A93A5] hover:text-[#d9a79c] shadow-[-2px_-2px_5px_#222631,2px_2px_5px_#101217]"
             >
               <span>Cart</span>
-              <span className="bg-[#d9a79c] text-white text-xs font-semibold px-2 py-0.5 rounded-full">
-                {cartQuantity} {cartQuantity === 1 ? "items" : "item"}
+              <span className="bg-[#d9a79c] text-[#191C24] text-xs font-bold px-2 py-0.5 rounded-full">
+                {cartQuantity} {cartQuantity === 1 ? "item" : "items"}
               </span>
             </Link>
             <Link
               to="/wishlist"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="flex items-center justify-between px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-[#d9a79c]"
+              className="flex items-center justify-between px-3 py-2.5 rounded-xl text-base font-medium text-[#8A93A5] hover:text-[#d9a79c] shadow-[-2px_-2px_5px_#222631,2px_2px_5px_#101217]"
             >
               <span>Wishlist</span>
-              <span className="bg-[#d9a79c] text-white text-xs font-semibold px-2 py-0.5 rounded-full">
-                {wishlistCount} {wishlistCount === 1 ? "items" : "item"}
+              <span className="bg-[#d9a79c] text-[#191C24] text-xs font-bold px-2 py-0.5 rounded-full">
+                {wishlistCount} {wishlistCount === 1 ? "item" : "items"}
               </span>
             </Link>
-            <div className="pt-2">
-              {/* Login Button */}
 
+            <div className="pt-2">
               {isAuthenticated ? (
-                <Link
-                  to="/login"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="block w-full cursor-pointer bg-[#d7a296] hover:bg-[#d9a79c] text-white font-bold py-2 px-3 rounded-lg text-md border-2 border-[#8c5245] shadow-[4px_4px_0px_0px_#8c5245] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[2px_2px_0px_0px_#8c5245] transition-all flex items-center justify-center gap-1.5"
+                <button
+                  onClick={() => {
+                    logout();
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="w-full cursor-pointer bg-[#191C24] text-[#d9a79c] font-bold py-3 px-4 rounded-xl text-md shadow-[-4px_-4px_10px_#222631,4px_4px_10px_#101217] active:shadow-[inset_2px_2px_4px_#101217,inset_-2px_-2px_4px_#222631] transition-all flex items-center justify-center gap-1.5"
                 >
                   Logout
-                </Link>
+                </button>
               ) : (
                 <Link
                   to="/login"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="block w-full cursor-pointer bg-[#d7a296] hover:bg-[#d9a79c] text-white font-bold py-2 px-3 rounded-lg text-md border-2 border-[#8c5245] shadow-[4px_4px_0px_0px_#8c5245] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[2px_2px_0px_0px_#8c5245] transition-all flex items-center justify-center gap-1.5"
+                  className="block w-full cursor-pointer bg-[#191C24] text-[#d9a79c] font-bold py-3 px-4 rounded-xl text-md shadow-[-4px_-4px_10px_#222631,4px_4px_10px_#101217] active:shadow-[inset_2px_2px_4px_#101217,inset_-2px_-2px_4px_#222631] transition-all text-center"
                 >
                   Login
                 </Link>

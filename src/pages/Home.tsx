@@ -36,31 +36,31 @@ function Home() {
 
   return (
     <div className="mx-auto px-4 sm:px-4 lg:px-4 py-8">
-      {/* 1. Loading State (Skeleton Grid) */}
+      {/* 1. Loading State (Neomorphic Skeleton Grid) */}
       {loading && (
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 xl:grid-cols-5 xxl:grid-cols-7 gap-6">
           {Array.from({ length: 8 }).map((_, index) => (
             <div
               key={index}
-              className="bg-white rounded-2xl border border-gray-100 p-4 shadow-sm animate-pulse flex flex-col"
+              className="bg-[#191C24] rounded-2xl p-4 shadow-[-6px_-6px_14px_#222631,6px_6px_14px_#101217] animate-pulse flex flex-col"
             >
-              {/* Image Placeholder */}
-              <div className="w-full h-56 bg-gray-200 rounded-xl mb-4"></div>
+              {/* Image Placeholder (Recessed) */}
+              <div className="w-full h-56 bg-[#191C24] rounded-xl mb-4 shadow-[inset_2px_2px_5px_#101217,inset_-2px_-2px_5px_#222631]"></div>
 
               {/* Title & Price Placeholder */}
               <div className="flex justify-between items-center mb-3">
-                <div className="h-5 bg-gray-200 rounded w-1/2"></div>
-                <div className="h-5 bg-gray-200 rounded w-1/4"></div>
+                <div className="h-4 bg-[#222631] rounded-lg w-1/2 shadow-[inset_1px_1px_2px_#101217]"></div>
+                <div className="h-4 bg-[#222631] rounded-lg w-1/4 shadow-[inset_1px_1px_2px_#101217]"></div>
               </div>
 
               {/* Description Lines Placeholder */}
               <div className="space-y-2 mb-6">
-                <div className="h-3.5 bg-gray-200 rounded w-full"></div>
-                <div className="h-3.5 bg-gray-200 rounded w-4/5"></div>
+                <div className="h-3 bg-[#222631] rounded-lg w-full shadow-[inset_1px_1px_2px_#101217]"></div>
+                <div className="h-3 bg-[#222631] rounded-lg w-4/5 shadow-[inset_1px_1px_2px_#101217]"></div>
               </div>
 
               {/* Button Placeholder */}
-              <div className="h-10 bg-gray-200 rounded-xl w-full mt-auto"></div>
+              <div className="h-9 bg-[#191C24] rounded-xl w-full mt-auto shadow-[-3px_-3px_6px_#222631,3px_3px_6px_#101217]"></div>
             </div>
           ))}
         </div>

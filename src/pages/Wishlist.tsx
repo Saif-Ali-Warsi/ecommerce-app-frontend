@@ -8,7 +8,8 @@ function Wishlist() {
   if (wishlist.length === 0) {
     return (
       <div className="max-w-7xl mx-auto px-4 py-20 text-center">
-        <div className="w-20 h-20 bg-rose-50 text-rose-500 rounded-full flex items-center justify-center mx-auto mb-4">
+        {/* Recessed Circular Icon Container */}
+        <div className="w-20 h-20 bg-[#191C24] text-[#d9a79c] rounded-full flex items-center justify-center mx-auto mb-6 shadow-[inset_3px_3px_6px_#101217,inset_-3px_-3px_6px_#222631]">
           <svg
             className="w-10 h-10"
             fill="none"
@@ -23,15 +24,18 @@ function Wishlist() {
             />
           </svg>
         </div>
-        <h2 className="text-2xl font-bold text-[#8c5245] mb-2">
+
+        <h2 className="text-2xl font-bold text-[#d9a79c] mb-2 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
           Your Wishlist is Empty
         </h2>
-        <p className="text-gray-500 mb-6 text-sm">
+        <p className="text-[#8A93A5] mb-8 text-sm">
           Save items you love to your wishlist and review them anytime.
         </p>
+
+        {/* Extruded Neomorphic Action Link */}
         <Link
           to="/products"
-          className="inline-block cursor-pointer bg-[#d7a296] hover:bg-[#d9a79c] text-[#8c5245] font-bold py-3 px-3 rounded-lg text-md border-2 border-[#8c5245] shadow-[4px_4px_0px_0px_#8c5245] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[2px_2px_0px_0px_#8c5245] transition-all flex items-center justify-center gap-1.5"
+          className="inline-flex cursor-pointer bg-[#191C24] text-[#d9a79c] font-bold py-3.5 px-6 rounded-2xl text-md shadow-[-6px_-6px_16px_#222631,6px_6px_16px_#101217] hover:shadow-[-3px_-3px_8px_#222631,3px_3px_8px_#101217] active:shadow-[inset_2px_2px_5px_#101217,inset_-2px_-2px_5px_#222631] transition-all items-center justify-center gap-1.5 mx-auto"
         >
           Explore Products
         </Link>
@@ -41,12 +45,12 @@ function Wishlist() {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-      {/* Header Title */}
+      {/* Header Title & Badge */}
       <div className="flex items-center justify-between mb-8">
-        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">
+        <h2 className="text-2xl sm:text-3xl font-bold text-[#CFD4DC] drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
           My Wishlist
         </h2>
-        <span className="text-sm font-medium text-gray-500 bg-gray-100 px-3 py-1 rounded-full">
+        <span className="text-sm font-semibold text-[#8A93A5] bg-[#191C24] px-4 py-1.5 rounded-full shadow-[inset_2px_2px_4px_#101217,inset_-2px_-2px_4px_#222631]">
           {wishlist.length} {wishlist.length === 1 ? "item" : "items"}
         </span>
       </div>
@@ -56,40 +60,43 @@ function Wishlist() {
         {wishlist.map((product) => (
           <div
             key={product.id}
-            className="group relative bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col"
+            className="group relative bg-[#191C24] rounded-2xl shadow-[-8px_-8px_16px_#222631,8px_8px_16px_#101217] hover:shadow-[-4px_-4px_10px_#222631,4px_4px_10px_#101217] transition-all duration-300 overflow-hidden flex flex-col"
           >
-            {/* Image Container with Link */}
+            {/* Image Container with Recessed Framing */}
             <Link
               to={`/products/${product.id}`}
-              className="relative w-full h-48 bg-gray-100 overflow-hidden block"
+              className="relative w-full h-48 bg-[#191C24] p-2 block"
             >
-              <img
-                src={product.thumbnail || product.images?.[0]}
-                alt={product.title}
-                className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
-              />
+              <div className="w-full h-full rounded-xl overflow-hidden shadow-[inset_2px_2px_5px_#101217,inset_-2px_-2px_5px_#222631]">
+                <img
+                  src={product.thumbnail || product.images?.[0]}
+                  alt={product.title}
+                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100"
+                />
+              </div>
             </Link>
 
             {/* Content Container */}
-            <div className="p-4 flex flex-col flex-grow">
+            <div className="p-4 flex flex-col flex-grow bg-[#191C24]">
               {/* Title */}
               <Link to={`/products/${product.id}`}>
-                <h3 className="font-semibold text-[#d7a296] text-base line-clamp-1 group-hover:text-indigo-900 transition-colors mb-1">
+                <h3 className="font-semibold text-[#CFD4DC] text-base line-clamp-1 group-hover:text-[#d9a79c] transition-colors mb-1 drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)]">
                   {product.title}
                 </h3>
               </Link>
 
               {/* Price */}
-              <span className="text-indigo-900 font-bold text-base mb-4">
+              <span className="text-[#d9a79c] font-bold text-base mb-4 drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)]">
                 AED {product.price}
               </span>
 
               {/* Action Buttons */}
-              <div className="mt-auto space-y-2">
+              <div className="mt-auto space-y-3">
+                {/* Add to Cart Button */}
                 <button
                   type="button"
                   onClick={() => addToCart(product)}
-                  className="w-full bg-[#d9a79c] hover:bg-[#d7a296] text-white font-medium py-2 px-4 rounded-xl text-xs transition-colors duration-200 flex items-center justify-center gap-2 shadow-sm cursor-pointer"
+                  className="w-full bg-[#191C24] text-[#d9a79c] font-bold py-2.5 px-4 rounded-xl text-xs transition-all duration-200 flex items-center justify-center gap-2 shadow-[-4px_-4px_8px_#222631,4px_4px_8px_#101217] hover:shadow-[-2px_-2px_4px_#222631,2px_2px_4px_#101217] active:shadow-[inset_2px_2px_4px_#101217,inset_-2px_-2px_4px_#222631] cursor-pointer"
                 >
                   <svg
                     className="w-4 h-4"
@@ -107,10 +114,11 @@ function Wishlist() {
                   Add to Cart
                 </button>
 
+                {/* Remove Button */}
                 <button
                   type="button"
                   onClick={() => removeFromWishlist(product.id)}
-                  className="w-full bg-white border border-gray-200 hover:bg-red-50 hover:border-red-100 hover:text-red-600 text-gray-600 font-medium py-2 px-4 rounded-xl text-xs transition-colors duration-200 flex items-center justify-center gap-1.5 cursor-pointer"
+                  className="w-full bg-[#191C24] text-red-400 font-medium py-2.5 px-4 rounded-xl text-xs transition-all duration-200 flex items-center justify-center gap-1.5 shadow-[-3px_-3px_6px_#222631,3px_3px_6px_#101217] hover:shadow-[-1px_-1px_3px_#222631,1px_1px_3px_#101217] active:shadow-[inset_2px_2px_4px_#101217,inset_-2px_-2px_4px_#222631] cursor-pointer"
                 >
                   <svg
                     className="w-4 h-4"
@@ -135,5 +143,4 @@ function Wishlist() {
     </div>
   );
 }
-
 export default Wishlist;

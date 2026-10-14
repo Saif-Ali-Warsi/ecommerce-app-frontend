@@ -4,7 +4,6 @@ import { getProductById } from "../services/productService";
 import type { Product } from "../types/product.types";
 import { useCart } from "../context/CartContext";
 
-
 function ProductDetails() {
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
@@ -14,7 +13,7 @@ function ProductDetails() {
 
   const [quantity, setQuantity] = useState(product?.minimumOrderQuantity || 1);
 
-  const {addToCart} = useCart()
+  const { addToCart } = useCart();
 
   useEffect(() => {
     async function loadProduct() {
@@ -46,12 +45,12 @@ function ProductDetails() {
     return (
       <div className="max-w-7xl mx-auto px-4 py-12 animate-pulse">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <div className="w-full h-96 bg-gray-200 rounded-2xl"></div>
+          <div className="w-full h-96 bg-[#191C24] rounded-3xl shadow-[inset_3px_3px_8px_#101217,inset_-3px_-3px_8px_#222631]"></div>
           <div className="space-y-4">
-            <div className="h-8 bg-gray-200 rounded w-3/4"></div>
-            <div className="h-6 bg-gray-200 rounded w-1/4"></div>
-            <div className="h-24 bg-gray-200 rounded w-full"></div>
-            <div className="h-12 bg-gray-200 rounded w-1/2"></div>
+            <div className="h-8 bg-[#191C24] rounded-xl w-3/4 shadow-[inset_2px_2px_5px_#101217,inset_-2px_-2px_5px_#222631]"></div>
+            <div className="h-6 bg-[#191C24] rounded-xl w-1/4 shadow-[inset_2px_2px_5px_#101217,inset_-2px_-2px_5px_#222631]"></div>
+            <div className="h-24 bg-[#191C24] rounded-xl w-full shadow-[inset_2px_2px_5px_#101217,inset_-2px_-2px_5px_#222631]"></div>
+            <div className="h-12 bg-[#191C24] rounded-xl w-1/2 shadow-[inset_2px_2px_5px_#101217,inset_-2px_-2px_5px_#222631]"></div>
           </div>
         </div>
       </div>
@@ -61,11 +60,11 @@ function ProductDetails() {
   // 2. Error State
   if (error) {
     return (
-      <div className="max-w-md mx-auto my-20 p-6 bg-red-50 border border-red-100 rounded-2xl text-center shadow-sm">
-        <h3 className="text-lg font-semibold text-gray-900 mb-1">
+      <div className="max-w-md mx-auto my-20 p-8 bg-[#191C24] rounded-3xl text-center shadow-[-8px_-8px_20px_#222631,8px_8px_20px_#101217]">
+        <h3 className="text-lg font-semibold text-[#CFD4DC] mb-2 drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)]">
           Error Loading Product
         </h3>
-        <p className="text-sm text-red-600">{error}</p>
+        <p className="text-sm text-red-400">{error}</p>
       </div>
     );
   }
@@ -74,10 +73,10 @@ function ProductDetails() {
   if (!product) {
     return (
       <div className="text-center py-24">
-        <h3 className="text-xl font-semibold text-gray-900 mb-1">
+        <h3 className="text-xl font-semibold text-[#CFD4DC] mb-2 drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)]">
           Product not found
         </h3>
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-[#8A93A5]">
           The product you are looking for does not exist.
         </p>
       </div>
@@ -96,14 +95,16 @@ function ProductDetails() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
         {/* Left Column: Image & Gallery Thumbnail */}
         <div className="space-y-4">
-          <div className="relative w-full h-[400px] sm:h-[500px] bg-gray-50 border border-gray-100 rounded-3xl overflow-hidden shadow-sm">
-            <img
-              src={product.thumbnail || product.images?.[0]}
-              alt={product.title}
-              className="w-full h-full object-cover object-center"
-            />
+          <div className="relative w-full h-[400px] sm:h-[500px] bg-[#191C24] p-3 rounded-3xl shadow-[-8px_-8px_20px_#222631,8px_8px_20px_#101217]">
+            <div className="w-full h-full rounded-2xl overflow-hidden shadow-[inset_3px_3px_8px_#101217,inset_-3px_-3px_8px_#222631] relative">
+              <img
+                src={product.thumbnail || product.images?.[0]}
+                alt={product.title}
+                className="w-full h-full object-cover object-center opacity-95"
+              />
+            </div>
             {product.discountPercentage && (
-              <span className="absolute top-4 left-4 bg-rose-500 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-sm">
+              <span className="absolute top-6 left-6 bg-[#191C24] text-rose-400 text-xs font-bold px-3 py-1.5 rounded-full shadow-[-3px_-3px_6px_#222631,3px_3px_6px_#101217]">
                 -{product.discountPercentage}% OFF
               </span>
             )}
@@ -113,40 +114,40 @@ function ProductDetails() {
         {/* Right Column: Product Details & Actions */}
         <div className="flex flex-col">
           {/* Category & Brand */}
-          <div className="flex items-center gap-2 mb-2">
-            <span className="text-xs font-semibold uppercase tracking-wider text-[#8c5245] bg-indigo-50 px-2.5 py-1 rounded-md">
+          <div className="flex items-center gap-2 mb-3">
+            <span className="text-xs font-semibold uppercase tracking-wider text-[#d9a79c] bg-[#191C24] px-3 py-1.5 rounded-xl shadow-[inset_2px_2px_4px_#101217,inset_-2px_-2px_4px_#222631]">
               {product.category}
             </span>
-            <span className="text-sm text-gray-400">•</span>
-            <span className="text-sm font-medium text-[#8c5245]">
-              Brand: <strong className="text-gray-900">{product.brand}</strong>
+            <span className="text-sm text-[#535C6D]">•</span>
+            <span className="text-sm font-medium text-[#8A93A5]">
+              Brand: <strong className="text-[#CFD4DC]">{product.brand}</strong>
             </span>
           </div>
 
           {/* Title */}
-          <h1 className="text-2xl sm:text-3xl font-bold text-[#8c5245] mb-3">
+          <h1 className="text-2xl sm:text-3xl font-bold text-[#CFD4DC] mb-3 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
             {product.title}
           </h1>
 
           {/* Rating & Stock Status */}
-          <div className="flex items-center gap-4 mb-4">
-            <div className="flex items-center gap-1 text-amber-500">
+          <div className="flex items-center gap-4 mb-5">
+            <div className="flex items-center gap-1 text-amber-400">
               <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
                 <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
               </svg>
-              <span className="text-sm font-bold text-[#8c5245]">
+              <span className="text-sm font-bold text-[#CFD4DC]">
                 {product.rating}
               </span>
-              <span className="text-xs text-gray-400">
+              <span className="text-xs text-[#8A93A5]">
                 ({product.reviews?.length || 0} reviews)
               </span>
             </div>
-            <span className="text-gray-300">|</span>
+            <span className="text-[#222631]">|</span>
             <span
-              className={`text-xs font-semibold px-2.5 py-1 rounded-full ${
+              className={`text-xs font-semibold px-3 py-1 rounded-full shadow-[inset_1px_1px_3px_#101217,inset_-1px_-1px_3px_#222631] ${
                 product.stock > 0
-                  ? "bg-emerald-50 text-emerald-700"
-                  : "bg-red-50 text-red-700"
+                  ? "bg-[#191C24] text-emerald-400"
+                  : "bg-[#191C24] text-red-400"
               }`}
             >
               {product.availabilityStatus} ({product.stock} left)
@@ -154,19 +155,19 @@ function ProductDetails() {
           </div>
 
           {/* Pricing */}
-          <div className="flex items-baseline gap-3 mb-6 p-4 bg-gray-50 rounded-2xl border border-gray-100">
-            <span className="text-3xl font-extrabold text-[#8c5245]">
+          <div className="flex items-baseline gap-4 mb-6 p-4 bg-[#191C24] rounded-2xl shadow-[inset_3px_3px_7px_#101217,inset_-3px_-3px_7px_#222631]">
+            <span className="text-3xl font-extrabold text-[#d9a79c] drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
               AED {discountedPrice}
             </span>
             {product.discountPercentage > 0 && (
-              <span className="text-lg text-gray-400 line-through font-medium">
+              <span className="text-lg text-[#535C6D] line-through font-medium">
                 AED {product.price}
               </span>
             )}
           </div>
 
           {/* Description */}
-          <p className="text-[#8c5245] text-sm leading-relaxed mb-6">
+          <p className="text-[#8A93A5] text-sm leading-relaxed mb-6">
             {product.description}
           </p>
 
@@ -176,7 +177,7 @@ function ProductDetails() {
               {product.tags.map((tag, idx) => (
                 <span
                   key={idx}
-                  className="text-xs bg-gray-100 text-[#8c5245] px-3 py-1 rounded-lg"
+                  className="text-xs bg-[#191C24] text-[#8A93A5] px-3 py-1.5 rounded-xl shadow-[-2px_-2px_5px_#222631,2px_2px_5px_#101217]"
                 >
                   #{tag}
                 </span>
@@ -187,39 +188,44 @@ function ProductDetails() {
           {/* Quantity and Add to Cart Section */}
           <div className="space-y-4 mb-8">
             <div className="flex items-center gap-4">
-              <span className="text-sm font-medium text-gray-700">
+              <span className="text-sm font-medium text-[#8A93A5]">
                 Quantity:
               </span>
-              <div className="flex items-center border border-gray-200 rounded-xl overflow-hidden bg-white">
+              <div className="flex items-center rounded-xl overflow-hidden bg-[#191C24] shadow-[inset_2px_2px_5px_#101217,inset_-2px_-2px_5px_#222631]">
                 <button
                   onClick={() =>
                     setQuantity(
                       Math.max(product.minimumOrderQuantity || 1, quantity - 1),
                     )
                   }
-                  className="cursor-pointer px-3 py-2 text-gray-600 hover:bg-gray-100 transition-colors"
+                  className="cursor-pointer px-3 py-2 text-[#8A93A5] hover:text-[#CFD4DC] hover:bg-[#222631] transition-colors"
                 >
                   -
                 </button>
-                <span className="px-4 py-2 text-sm font-semibold text-[#8c5245]">
+                <span className="px-4 py-2 text-sm font-bold text-[#CFD4DC]">
                   {quantity}
                 </span>
                 <button
                   onClick={() => setQuantity(quantity + 1)}
-                  className="cursor-pointer px-3 py-2 text-gray-600 hover:bg-gray-100 transition-colors"
+                  className="cursor-pointer px-3 py-2 text-[#8A93A5] hover:text-[#CFD4DC] hover:bg-[#222631] transition-colors"
                 >
                   +
                 </button>
               </div>
               {product.minimumOrderQuantity > 1 && (
-                <span className="text-xs text-[#8c5245]">
+                <span className="text-xs text-[#535C6D]">
                   (Min. order: {product.minimumOrderQuantity})
                 </span>
               )}
             </div>
 
             <div className="flex gap-4">
-              <button onClick={()=>{addToCart(product);}} className="cursor-pointer w-full bg-[#d7a296] hover:bg-[#d9a79c] text-white font-bold py-5 px-3 rounded-lg text-md border-2 border-[#8c5245] shadow-[4px_4px_0px_0px_#8c5245] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[2px_2px_0px_0px_#8c5245] transition-all flex items-center justify-center gap-1.5">
+              <button
+                onClick={() => {
+                  addToCart(product);
+                }}
+                className="cursor-pointer w-full bg-[#191C24] text-[#d9a79c] font-bold py-4 px-4 rounded-2xl text-md shadow-[-6px_-6px_16px_#222631,6px_6px_16px_#101217] hover:shadow-[-3px_-3px_8px_#222631,3px_3px_8px_#101217] active:shadow-[inset_2px_2px_5px_#101217,inset_-2px_-2px_5px_#222631] transition-all flex items-center justify-center gap-2"
+              >
                 <svg
                   className="w-5 h-5"
                   fill="none"
@@ -239,20 +245,20 @@ function ProductDetails() {
           </div>
 
           {/* Additional Meta Specs Grid */}
-          <div className="grid grid-cols-2 gap-4 pt-6 border-t border-gray-100 text-xs text-[#8c5245]">
-            <div>
-              <strong className="text-gray-700">SKU:</strong> {product.sku}
+          <div className="grid grid-cols-2 gap-4 pt-6 border-t border-[#222631] text-xs text-[#8A93A5]">
+            <div className="bg-[#191C24] p-3 rounded-xl shadow-[inset_2px_2px_4px_#101217,inset_-2px_-2px_4px_#222631]">
+              <strong className="text-[#CFD4DC]">SKU:</strong> {product.sku}
             </div>
-            <div>
-              <strong className="text-gray-700">Warranty:</strong>{" "}
+            <div className="bg-[#191C24] p-3 rounded-xl shadow-[inset_2px_2px_4px_#101217,inset_-2px_-2px_4px_#222631]">
+              <strong className="text-[#CFD4DC]">Warranty:</strong>{" "}
               {product.warrantyInformation}
             </div>
-            <div>
-              <strong className="text-gray-700">Shipping:</strong>{" "}
+            <div className="bg-[#191C24] p-3 rounded-xl shadow-[inset_2px_2px_4px_#101217,inset_-2px_-2px_4px_#222631]">
+              <strong className="text-[#CFD4DC]">Shipping:</strong>{" "}
               {product.shippingInformation}
             </div>
-            <div>
-              <strong className="text-gray-700">Returns:</strong>{" "}
+            <div className="bg-[#191C24] p-3 rounded-xl shadow-[inset_2px_2px_4px_#101217,inset_-2px_-2px_4px_#222631]">
+              <strong className="text-[#CFD4DC]">Returns:</strong>{" "}
               {product.returnPolicy}
             </div>
           </div>
@@ -261,18 +267,18 @@ function ProductDetails() {
 
       {/* Customer Reviews Section */}
       {product.reviews && product.reviews.length > 0 && (
-        <div className="mt-16 pt-12 border-t border-gray-100">
-          <h3 className="text-xl font-bold text-gray-900 mb-6">
+        <div className="mt-16 pt-12 border-t border-[#222631]">
+          <h3 className="text-xl font-bold text-[#CFD4DC] mb-6 drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)]">
             Customer Reviews
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {product.reviews.map((review, idx) => (
               <div
                 key={idx}
-                className="bg-gray-50 border border-gray-100 p-5 rounded-2xl flex flex-col justify-between"
+                className="bg-[#191C24] p-5 rounded-2xl flex flex-col justify-between shadow-[-6px_-6px_14px_#222631,6px_6px_14px_#101217]"
               >
                 <div>
-                  <div className="flex items-center gap-1 text-amber-500 mb-2">
+                  <div className="flex items-center gap-1 text-amber-400 mb-2">
                     {Array.from({ length: review.rating }).map((_, i) => (
                       <svg
                         key={i}
@@ -283,12 +289,12 @@ function ProductDetails() {
                       </svg>
                     ))}
                   </div>
-                  <p className="text-sm text-gray-800 italic mb-4">
+                  <p className="text-sm text-[#CFD4DC] italic mb-4 leading-relaxed">
                     "{review.comment}"
                   </p>
                 </div>
-                <div className="text-xs text-gray-500">
-                  <span className="font-semibold text-[#8c5245] block">
+                <div className="text-xs text-[#535C6D] pt-3 border-t border-[#222631]">
+                  <span className="font-semibold text-[#d9a79c] block">
                     {review.reviewerName}
                   </span>
                   <span>{new Date(review.date).toLocaleDateString()}</span>

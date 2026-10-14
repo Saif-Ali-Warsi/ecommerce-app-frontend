@@ -14,11 +14,11 @@ function OrderConfirmation() {
   const location = useLocation();
   const order = location.state as OrderData | null;
 
-  // 1. No Order Found State
   if (!order) {
     return (
       <div className="max-w-7xl mx-auto px-4 py-20 text-center">
-        <div className="w-20 h-20 bg-gray-100 text-gray-400 rounded-full flex items-center justify-center mx-auto mb-4">
+        {/* Recessed Circular Icon Container */}
+        <div className="w-20 h-20 bg-[#191C24] text-[#d9a79c] rounded-full flex items-center justify-center mx-auto mb-6 shadow-[inset_3px_3px_6px_#101217,inset_-3px_-3px_6px_#222631]">
           <svg
             className="w-10 h-10"
             fill="none"
@@ -33,15 +33,15 @@ function OrderConfirmation() {
             />
           </svg>
         </div>
-        <h2 className="text-2xl font-bold text-gray-900 mb-2">
+        <h2 className="text-2xl font-bold text-[#d9a79c] mb-2 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
           No Order Details Found
         </h2>
-        <p className="text-gray-500 mb-6 text-sm">
+        <p className="text-[#8A93A5] mb-8 text-sm">
           We couldn't locate any recent order details.
         </p>
         <Link
           to="/products"
-          className="inline-block bg-[#d7a296] hover:bg-indigo-700 text-white font-medium px-6 py-3 rounded-xl transition-all shadow-sm"
+          className="inline-flex cursor-pointer bg-[#191C24] text-[#d9a79c] font-bold py-3.5 px-6 rounded-2xl text-md shadow-[-6px_-6px_16px_#222631,6px_6px_16px_#101217] hover:shadow-[-3px_-3px_8px_#222631,3px_3px_8px_#101217] active:shadow-[inset_2px_2px_5px_#101217,inset_-2px_-2px_5px_#222631] transition-all items-center justify-center gap-1.5 mx-auto"
         >
           Continue Shopping
         </Link>
@@ -56,7 +56,7 @@ function OrderConfirmation() {
     <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       {/* Success Header Banner */}
       <div className="text-center mb-10">
-        <div className="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm animate-bounce">
+        <div className="w-16 h-16 bg-[#191C24] text-emerald-400 rounded-full flex items-center justify-center mx-auto mb-4 shadow-[-6px_-6px_14px_#222631,6px_6px_14px_#101217] animate-bounce">
           <svg
             className="w-8 h-8"
             fill="none"
@@ -71,58 +71,60 @@ function OrderConfirmation() {
             />
           </svg>
         </div>
-        <span className="text-xs font-semibold uppercase tracking-widest text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full">
+        <span className="text-xs font-semibold uppercase tracking-widest text-emerald-400 bg-[#191C24] px-4 py-1.5 rounded-full shadow-[inset_2px_2px_4px_#101217,inset_-2px_-2px_4px_#222631]">
           Order Confirmed
         </span>
-        <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mt-3 mb-1">
+        <h1 className="text-2xl sm:text-3xl font-bold text-[#CFD4DC] mt-4 mb-1 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
           Thank you, {order.fullName}!
         </h1>
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-[#8A93A5]">
           Your order has been successfully placed and is being processed.
         </p>
-        <div className="mt-2 text-xs text-gray-400">
-          Order ID: <strong className="text-gray-700">#{orderId}</strong>
+        <div className="mt-3 text-xs text-[#535C6D]">
+          Order ID: <strong className="text-[#CFD4DC]">#{orderId}</strong>
         </div>
       </div>
 
       {/* Details Card Container */}
-      <div className="bg-white border border-gray-100 rounded-2xl shadow-sm overflow-hidden mb-8">
+      <div className="bg-[#191C24] rounded-3xl shadow-[-8px_-8px_20px_#222631,8px_8px_20px_#101217] overflow-hidden mb-8 border-0">
         {/* Delivery Details Section */}
-        <div className="p-6 sm:p-8 border-b border-gray-100">
-          <h2 className="text-base font-bold text-gray-900 mb-4 flex items-center gap-2">
-            <svg
-              className="w-5 h-5 text-indigo-600"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-              />
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-              />
-            </svg>
+        <div className="p-6 sm:p-8 border-b border-[#222631]">
+          <h2 className="text-base font-bold text-[#CFD4DC] mb-4 flex items-center gap-2.5 drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)]">
+            <div className="p-2 rounded-xl bg-[#191C24] text-[#d9a79c] shadow-[inset_2px_2px_4px_#101217,inset_-2px_-2px_4px_#222631]">
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                />
+              </svg>
+            </div>
             Delivery Address & Contact
           </h2>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-gray-600 bg-gray-50 p-4 rounded-xl border border-gray-100">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-[#8A93A5] bg-[#191C24] p-5 rounded-2xl shadow-[inset_3px_3px_6px_#101217,inset_-3px_-3px_6px_#222631]">
             <div>
-              <p className="font-semibold text-gray-900 mb-1">
+              <p className="font-semibold text-[#CFD4DC] mb-1">
                 {order.fullName}
               </p>
-              <p className="text-xs text-gray-500">{order.email}</p>
+              <p className="text-xs text-[#535C6D]">{order.email}</p>
             </div>
             <div>
-              <p className="text-gray-700 whitespace-pre-line">
+              <p className="text-[#CFD4DC] whitespace-pre-line">
                 {order.address}
               </p>
-              <p className="text-gray-700 mt-1">
+              <p className="text-[#CFD4DC] mt-1">
                 {order.city}, {order.pinCode}
               </p>
             </div>
@@ -130,17 +132,17 @@ function OrderConfirmation() {
         </div>
 
         {/* Order Financials Section */}
-        <div className="p-6 sm:p-8 bg-gray-50/50 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="p-6 sm:p-8 bg-[#191C24] flex flex-col sm:flex-row items-center justify-between gap-4">
           <div>
-            <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-1">
+            <h3 className="text-xs font-semibold uppercase tracking-wider text-[#535C6D] mb-1">
               Total Paid
             </h3>
-            <span className="text-2xl font-extrabold text-indigo-600">
+            <span className="text-2xl font-extrabold text-[#d9a79c] drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
               AED {order.total.toFixed(2)}
             </span>
           </div>
 
-          <div className="flex items-center gap-2 text-xs text-emerald-600 bg-emerald-50 px-3 py-1.5 rounded-lg border border-emerald-100">
+          <div className="flex items-center gap-2 text-xs font-semibold text-emerald-400 bg-[#191C24] px-4 py-2 rounded-xl shadow-[inset_2px_2px_4px_#101217,inset_-2px_-2px_4px_#222631]">
             <svg
               className="w-4 h-4"
               fill="none"
@@ -163,7 +165,7 @@ function OrderConfirmation() {
       <div className="flex flex-col sm:flex-row gap-4 justify-center">
         <Link
           to="/products"
-          className="cursor-pointer bg-[#d7a296] hover:bg-[#d9a79c] text-white font-bold py-5 px-3 rounded-lg text-md border-2 border-[#8c5245] shadow-[4px_4px_0px_0px_#8c5245] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[2px_2px_0px_0px_#8c5245] transition-all flex items-center justify-center gap-1.5"
+          className="cursor-pointer bg-[#191C24] text-[#d9a79c] font-bold py-4 px-8 rounded-2xl text-md shadow-[-6px_-6px_16px_#222631,6px_6px_16px_#101217] hover:shadow-[-3px_-3px_8px_#222631,3px_3px_8px_#101217] active:shadow-[inset_2px_2px_5px_#101217,inset_-2px_-2px_5px_#222631] transition-all flex items-center justify-center gap-1.5"
         >
           Continue Shopping
         </Link>
