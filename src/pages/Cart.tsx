@@ -42,7 +42,7 @@ function Cart() {
         </p>
         <Link
           to="/products"
-          className="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-medium px-6 py-3 rounded-xl transition-all shadow-sm"
+          className="inline-block bg-[#d7a296] hover:bg-indigo-700 text-white font-medium px-6 py-3 rounded-xl transition-all shadow-sm"
         >
           Start Shopping
         </Link>
@@ -174,7 +174,7 @@ function Cart() {
 
           <button
             type="button"
-            className="cursor-pointer w-full bg-gray-900 hover:bg-indigo-600 text-white font-medium py-3 px-4 rounded-xl transition-all duration-200 shadow-sm flex items-center justify-center gap-2"
+            className="cursor-pointer w-full bg-[#d9a79c] hover:bg-[#d7a296] text-white font-medium py-3 px-4 rounded-xl transition-all duration-200 shadow-sm flex items-center justify-center gap-2"
             disabled={cartItems.length === 0}
             onClick={() => {
               navigate("/checkout");

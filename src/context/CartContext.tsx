@@ -7,6 +7,7 @@ import {
 } from "react";
 import type { CartItem, Product } from "../types/product.types";
 
+
 type CartContextType = {
   cartItems: CartItem[];
   addToCart: (product: Product) => void;

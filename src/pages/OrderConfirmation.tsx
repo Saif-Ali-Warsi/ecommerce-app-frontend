@@ -41,7 +41,7 @@ function OrderConfirmation() {
         </p>
         <Link
           to="/products"
-          className="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-medium px-6 py-3 rounded-xl transition-all shadow-sm"
+          className="inline-block bg-[#d7a296] hover:bg-indigo-700 text-white font-medium px-6 py-3 rounded-xl transition-all shadow-sm"
         >
           Continue Shopping
         </Link>
@@ -163,7 +163,7 @@ function OrderConfirmation() {
       <div className="flex flex-col sm:flex-row gap-4 justify-center">
         <Link
           to="/products"
-          className="bg-gray-900 hover:bg-indigo-600 text-white font-medium py-3 px-6 rounded-xl transition-all text-center shadow-sm"
+          className="bg-gray-900 hover:bg-[#d7a296] text-white font-medium py-3 px-6 rounded-xl transition-all text-center shadow-sm"
         >
           Continue Shopping
         </Link>

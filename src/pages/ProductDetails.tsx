@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getProductById } from "../services/productService";
 import type { Product } from "../types/product.types";
+import { useCart } from "../context/CartContext";
+
 
 function ProductDetails() {
   const [product, setProduct] = useState<Product | null>(null);
@@ -11,6 +13,8 @@ function ProductDetails() {
   const { id } = useParams<{ id: string }>();
 
   const [quantity, setQuantity] = useState(product?.minimumOrderQuantity || 1);
+
+  const {addToCart} = useCart()
 
   useEffect(() => {
     async function loadProduct() {
@@ -215,7 +219,7 @@ function ProductDetails() {
             </div>
 
             <div className="flex gap-4">
-              <button className="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 px-6 rounded-xl transition-all shadow-sm flex items-center justify-center gap-2">
+              <button onClick={()=>{addToCart(product);}} className="cursor-pointer flex-1 bg-[#d7a296] hover:bg-[#d9a79c] text-white font-medium py-3 px-6 rounded-xl transition-all shadow-sm flex items-center justify-center gap-2">
                 <svg
                   className="w-5 h-5"
                   fill="none"

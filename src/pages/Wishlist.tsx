@@ -31,7 +31,7 @@ function Wishlist() {
         </p>
         <Link
           to="/products"
-          className="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-medium px-6 py-3 rounded-xl transition-all shadow-sm"
+          className="inline-block bg-[#d7a296] hover:bg-[#ddb5ac] text-white font-medium px-6 py-3 rounded-xl transition-all shadow-sm"
         >
           Explore Products
         </Link>
@@ -89,7 +89,7 @@ function Wishlist() {
                 <button
                   type="button"
                   onClick={() => addToCart(product)}
-                  className="w-full bg-gray-900 hover:bg-indigo-600 text-white font-medium py-2 px-4 rounded-xl text-xs transition-colors duration-200 flex items-center justify-center gap-2 shadow-sm cursor-pointer"
+                  className="w-full bg-gray-900 hover:bg-[#d7a296] text-white font-medium py-2 px-4 rounded-xl text-xs transition-colors duration-200 flex items-center justify-center gap-2 shadow-sm cursor-pointer"
                 >
                   <svg
                     className="w-4 h-4"

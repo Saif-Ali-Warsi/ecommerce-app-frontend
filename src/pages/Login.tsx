@@ -5,6 +5,7 @@ import { loginUser } from "../services/authService";
 import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 type LoginFormData = {
   username: string;
@@ -36,8 +37,10 @@ function Login() {
       setIsLoggedIn(true);
 
       navigate("/");
+      toast.success("sds");
     } catch (error) {
       setErrorMessage("Invalid username or password. Please try again.");
+      toast.error("sds")
     }
   }
 
@@ -46,7 +49,7 @@ function Login() {
       <div className="max-w-md w-full space-y-8 bg-white p-8 rounded-xl shadow-lg border border-gray-100">
         {/* Header */}
         <div className="text-center">
-          <h2 className="text-3xl font-extrabold text-[#ddb5ac] tracking-tight">
+          <h2 className="text-3xl font-extrabold text-[#d9a79c] tracking-tight">
             Welcome Back
           </h2>
           <p className="mt-2 text-sm text-gray-600">
@@ -85,7 +88,7 @@ function Login() {
                 className={`w-full px-4 py-2.5 bg-gray-50 border rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:bg-white focus:ring-2 transition-all ${
                   errors.username
                     ? "border-red-500 focus:border-red-500 focus:ring-red-500/20"
-                    : "border-gray-200 focus:border-indigo-500 focus:ring-indigo-500/20"
+                    : "border-gray-200 focus:border-[#d9a79c] focus:ring-[#d9a79c]"
                 }`}
               />
               {errors.username && (
@@ -107,7 +110,7 @@ function Login() {
                 className={`w-full px-4 py-2.5 bg-gray-50 border rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:bg-white focus:ring-2 transition-all ${
                   errors.password
                     ? "border-red-500 focus:border-red-500 focus:ring-red-500/20"
-                    : "border-gray-200 focus:border-indigo-500 focus:ring-indigo-500/20"
+                    : "border-gray-200 focus:border-[#d9a79c] focus:ring-[#d9a79c]"
                 }`}
               />
               {errors.password && (
@@ -121,7 +124,7 @@ function Login() {
           {/* Submit Button */}
           <button
             type="submit"
-            className="cursor-pointer w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors"
+            className="cursor-pointer w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-[#d7a296] hover:bg-[#d9a79c] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors"
           >
             Sign In
           </button>

@@ -65,7 +65,7 @@ function Header() {
 
               {/* Logo / Brand Name */}
               <Link to="/" className="flex items-center gap-2 group">
-                <div className="w-9 h-9 bg-[#d7a296] rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-md group-hover:bg-[#ddb5ac] transition-colors">
+                <div className="w-9 h-9 bg-[#d7a296] rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-md group-hover:bg-[#d9a79c] transition-colors">
                   S
                 </div>
                 <span className="text-xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
@@ -74,37 +74,35 @@ function Header() {
               </Link>
             </div>
 
-           
-
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center gap-8">
               <Link
                 to="/"
-                className="text-sm font-medium text-gray-700 hover:text-indigo-600 transition-colors"
+                className="text-sm font-medium text-gray-700 hover:text-[#d9a79c] transition-colors"
               >
                 Home
               </Link>
               <Link
                 to="/products"
-                className="text-sm font-medium text-gray-700 hover:text-indigo-600 transition-colors"
+                className="text-sm font-medium text-gray-700 hover:text-[#d9a79c] transition-colors"
               >
                 Products
               </Link>
               <Link
                 to="/categories"
-                className="text-sm font-medium text-gray-700 hover:text-indigo-600 transition-colors"
+                className="text-sm font-medium text-gray-700 hover:text-[#d9a79c] transition-colors"
               >
                 Categories
               </Link>
               <Link
                 to="/wishlist"
-                className="text-sm font-medium text-gray-700 hover:text-indigo-600 transition-colors"
+                className="text-sm font-medium text-gray-700 hover:text-[#d9a79c] transition-colors"
               >
                 Wishlist
               </Link>
             </nav>
 
-             {/* Search */}
+            {/* Search */}
             <div className="">
               <div className="relative w-full">
                 {/* Search Icon */}
@@ -131,7 +129,7 @@ function Header() {
                     placeholder="Search products..."
                     value={searchTerm}
                     onChange={(event) => setSearchTerm(event.target.value)}
-                    className="w-full pl-10 pr-10 py-2.5 bg-gray-50 border border-[#ddb5ac] rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:bg-white focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 transition-all duration-200"
+                    className="w-full pl-10 pr-10 py-2.5 bg-gray-50 border border-[#d9a79c] rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:bg-white focus:border-[#d9a79c] focus:ring-2 focus:ring-[#d9a79c] transition-all duration-200"
                   />
 
                   {/* Clear Input Button (Visible only when text exists) */}
@@ -165,7 +163,7 @@ function Header() {
               {/* Cart Button with Badge */}
               <Link
                 to="/cart"
-                className="relative p-2 text-gray-700 hover:text-indigo-600 transition-colors"
+                className="relative p-2 text-[#d7a296] hover:text-[#d9a79c] transition-colors"
                 aria-label="Shopping Cart"
               >
                 <svg
@@ -182,14 +180,14 @@ function Header() {
                   />
                 </svg>
                 {/* Badge Counter */}
-                <span className="absolute top-1 right-1 w-4 h-4 bg-indigo-600 text-white text-[10px] font-bold rounded-full flex items-center justify-center">
+                <span className="absolute top-1 right-1 w-4 h-4 bg-[#d7a296] text-white text-[10px] font-bold rounded-full flex items-center justify-center">
                   {cartQuantity}
                 </span>
               </Link>
 
               <Link
                 to="/wishlist"
-                className="relative p-2 text-gray-700 hover:text-indigo-600 transition-colors"
+                className="relative p-2 text-[#d7a296] hover:text-[#d9a79c] transition-colors"
                 aria-label="Wishlist"
               >
                 {/* Heart Icon for Wishlist */}
@@ -208,10 +206,12 @@ function Header() {
                 </svg>
 
                 {/* Wishlist Badge Counter */}
-                <span className="absolute top-1 right-1 w-4 h-4 bg-indigo-600 text-white text-[10px] font-bold rounded-full flex items-center justify-center">
+                <span className="absolute top-1 right-1 w-4 h-4 bg-[#d7a296] text-white text-[10px] font-bold rounded-full flex items-center justify-center">
                   {wishlistCount}
                 </span>
               </Link>
+              
+              |
 
               {/* Login Button */}
               {isAuthenticated ? (
@@ -219,7 +219,7 @@ function Header() {
                   <span>Welcome, {user?.firstName}</span>{" "}
                   <button
                     onClick={logout}
-                    className="cursor-pointer px-4 py-2 text-sm font-medium text-white bg-gray-900 hover:bg-indigo-600 rounded-xl transition-all duration-200 shadow-sm hover:shadow-md"
+                    className="cursor-pointer px-4 py-2 text-sm font-medium text-white bg-red-700 hover:bg-[#d7a296] rounded-xl transition-all duration-200 shadow-sm hover:shadow-md"
                   >
                     Logout
                   </button>
@@ -227,7 +227,7 @@ function Header() {
               ) : (
                 <Link
                   to="/login"
-                  className="cursor-pointer px-4 py-2 text-sm font-medium text-white bg-gray-900 hover:bg-indigo-600 rounded-xl transition-all duration-200 shadow-sm hover:shadow-md"
+                  className="cursor-pointer px-4 py-2 text-sm font-medium text-white bg-[#d7a296] hover:bg-[#d7a296] rounded-xl transition-all duration-200 shadow-sm hover:shadow-md"
                 >
                   Login
                 </Link>
@@ -250,41 +250,41 @@ function Header() {
             <Link
               to="/"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-indigo-600"
+              className="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-[#d9a79c]"
             >
               Home
             </Link>
             <Link
               to="/products"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-indigo-600"
+              className="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-[#d9a79c]"
             >
               Products
             </Link>
             <Link
               to="/categories"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-indigo-600"
+              className="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-[#d9a79c]"
             >
               Categories
             </Link>
             <Link
               to="/cart"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="flex items-center justify-between px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-indigo-600"
+              className="flex items-center justify-between px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-[#d9a79c]"
             >
               <span>Cart</span>
-              <span className="bg-indigo-100 text-indigo-600 text-xs font-semibold px-2 py-0.5 rounded-full">
+              <span className="bg-[#d9a79c] text-white text-xs font-semibold px-2 py-0.5 rounded-full">
                 {cartQuantity} {cartQuantity === 1 ? "items" : "item"}
               </span>
             </Link>
             <Link
               to="/wishlist"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="flex items-center justify-between px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-indigo-600"
+              className="flex items-center justify-between px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-[#d9a79c]"
             >
               <span>Wishlist</span>
-              <span className="bg-indigo-100 text-indigo-600 text-xs font-semibold px-2 py-0.5 rounded-full">
+              <span className="bg-[#d9a79c] text-white text-xs font-semibold px-2 py-0.5 rounded-full">
                 {wishlistCount} {wishlistCount === 1 ? "items" : "item"}
               </span>
             </Link>
@@ -295,7 +295,7 @@ function Header() {
                 <Link
                   to="/login"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="block w-full text-center px-4 py-2.5 text-sm font-medium text-white bg-gray-900 rounded-xl"
+                  className="block w-full text-center px-4 py-2.5 text-sm font-medium text-white bg-[#d7a296] rounded-xl"
                 >
                   Logout
                 </Link>
@@ -303,7 +303,7 @@ function Header() {
                 <Link
                   to="/login"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="block w-full text-center px-4 py-2.5 text-sm font-medium text-white bg-gray-900 rounded-xl"
+                  className="block w-full text-center px-4 py-2.5 text-sm font-medium text-white bg-[#d7a296] rounded-xl"
                 >
                   Login
                 </Link>

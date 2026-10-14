@@ -91,7 +91,7 @@ function Checkout() {
                 className={`w-full px-4 py-2.5 bg-gray-50 border rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:bg-white focus:ring-2 transition-all ${
                   errors.fullName
                     ? "border-red-500 focus:border-red-500 focus:ring-red-500/20"
-                    : "border-gray-200 focus:border-indigo-500 focus:ring-indigo-500/20"
+                    : "border-gray-200 focus:border-[#d9a79c] focus:ring-[#d9a79c]"
                 }`}
               />
               {errors.fullName && (
@@ -113,7 +113,7 @@ function Checkout() {
                 className={`w-full px-4 py-2.5 bg-gray-50 border rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:bg-white focus:ring-2 transition-all ${
                   errors.email
                     ? "border-red-500 focus:border-red-500 focus:ring-red-500/20"
-                    : "border-gray-200 focus:border-indigo-500 focus:ring-indigo-500/20"
+                    : "border-gray-200 focus:border-[#d9a79c] focus:ring-[#d9a79c]"
                 }`}
               />
               {errors.email && (
@@ -135,7 +135,7 @@ function Checkout() {
                 className={`w-full px-4 py-2.5 bg-gray-50 border rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:bg-white focus:ring-2 transition-all ${
                   errors.address
                     ? "border-red-500 focus:border-red-500 focus:ring-red-500/20"
-                    : "border-gray-200 focus:border-indigo-500 focus:ring-indigo-500/20"
+                    : "border-gray-200 focus:border-[#d9a79c] focus:ring-[#d9a79c]"
                 }`}
               ></textarea>
               {errors.address && (
@@ -159,7 +159,7 @@ function Checkout() {
                   className={`w-full px-4 py-2.5 bg-gray-50 border rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:bg-white focus:ring-2 transition-all ${
                     errors.city
                       ? "border-red-500 focus:border-red-500 focus:ring-red-500/20"
-                      : "border-gray-200 focus:border-indigo-500 focus:ring-indigo-500/20"
+                      : "border-gray-200 focus:border-[#d9a79c] focus:ring-[#d9a79c]"
                   }`}
                 />
                 {errors.city && (
@@ -181,7 +181,7 @@ function Checkout() {
                   className={`w-full px-4 py-2.5 bg-gray-50 border rounded-xl text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:bg-white focus:ring-2 transition-all ${
                     errors.pinCode
                       ? "border-red-500 focus:border-red-500 focus:ring-red-500/20"
-                      : "border-gray-200 focus:border-indigo-500 focus:ring-indigo-500/20"
+                      : "border-gray-200 focus:border-[#d9a79c] focus:ring-[#d9a79c]"
                   }`}
                 />
                 {errors.pinCode && (
@@ -195,7 +195,7 @@ function Checkout() {
             {/* Submit Button */}
             <button
               type="submit"
-              className="w-full mt-6 bg-gray-900 hover:bg-indigo-600 text-white font-medium py-3 px-4 rounded-xl transition-all duration-200 shadow-sm flex items-center justify-center gap-2 cursor-pointer"
+              className="w-full mt-6 bg-gray-900 hover:bg-[#d7a296] text-white font-medium py-3 px-4 rounded-xl transition-all duration-200 shadow-sm flex items-center justify-center gap-2 cursor-pointer"
             >
               Continue to Payment
               <svg
