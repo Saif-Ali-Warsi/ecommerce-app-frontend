@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import type { Product } from "../types/product.types";
 import {
   getCategories,
@@ -6,7 +6,8 @@ import {
 } from "../services/productService";
 import ProductCard from "../components/products/ProductCard";
 
-function Products() {
+
+const Products = memo(function Products() {
   const [products, setProducts] = useState<Product[]>([]);
   const [categories, setCategories] = useState<string[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>("");
@@ -308,6 +309,6 @@ function Products() {
       </div>
     </>
   );
-}
+});
 
 export default Products;
