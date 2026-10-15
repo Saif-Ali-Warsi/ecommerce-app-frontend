@@ -113,14 +113,14 @@ function Home() {
         <div className="m-5">
           <img
             className="rounded-3xl"
-            src="src/assets/media/banner-1.jpg"
+            src="https://www.image2url.com/r2/default/images/1792079439184-2eda2b8e-923f-4435-8906-8199d08703d9.jpg"
             alt="banner-image"
           />
         </div>
         <div className="m-5">
           <img
             className="rounded-3xl"
-            src="src/assets/media/banner-2.jpg"
+            src="https://www.image2url.com/r2/default/images/1792079433937-2d6de5b5-8306-41d3-84f4-e6eefb2d4803.jpg"
             alt="banner-image"
           />
         </div>
