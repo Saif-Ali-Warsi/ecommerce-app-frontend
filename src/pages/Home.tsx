@@ -72,13 +72,12 @@ function Home() {
 
       setSingleProductThree(singleProductThreeData);
     }
-
     loadProduct("106");
   }, []);
 
   return (
     <div className="mx-auto px-4 sm:px-4 lg:px-4 py-8">
-      <div className="grid mb-10 px-3 sm:px-3 lg:px-3 grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-6">
+      <div className="grid mb-10 px-3 sm:px-3 lg:px-3 grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-6">
         <div>
           <DealOfTheDay>
             {/* Left Column: Product Card */}

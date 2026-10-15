@@ -74,7 +74,7 @@ function ProductCard({ product }: ProductCardProps) {
           <div className="p-3.5 flex flex-col flex-grow bg-[#191C24]">
             {/* Title & Price Row */}
             <div className="flex justify-between items-start gap-1 mb-1">
-              <h3 className="font-semibold text-[#CFD4DC] text-xs line-clamp-1 group-hover:text-[#d9a79c] transition-colors drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)]">
+              <h3 className="font-semibold text-[#ffffff] text-xs line-clamp-1 group-hover:text-[#d9a79c] transition-colors drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)]">
                 {product.title}
               </h3>
               <span className="text-[#d9a79c] font-bold text-xs whitespace-nowrap drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)]">
