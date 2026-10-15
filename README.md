@@ -1,7 +1,10 @@
 <div align="center">
 
-React E-Commerce App
+# React E-Commerce App
+
 A responsive e-commerce application built with React, TypeScript, and Vite, featuring product browsing, search, cart and wishlist management, authentication, and a checkout flow.
+
+**Live Demo:** [View the E-Commerce App](https://saif-ali-warsi.github.io/ecommerce-app-frontend/)
 
 <p>
   <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React" />
