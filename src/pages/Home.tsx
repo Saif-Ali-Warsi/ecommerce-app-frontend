@@ -3,6 +3,7 @@ import type { Product } from "../types/product.types";
 import { getProducts, searchProducts } from "../services/productService";
 import ProductCard from "../components/products/ProductCard";
 import { useSearchParams } from "react-router-dom";
+import DealOfTheDay from "../components/products/DealOfTheDay";
 
 function Home() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -36,6 +37,7 @@ function Home() {
 
   return (
     <div className="mx-auto px-4 sm:px-4 lg:px-4 py-8">
+      <DealOfTheDay />
       {/* 1. Loading State (Neomorphic Skeleton Grid) */}
       {loading && (
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 xl:grid-cols-5 xxl:grid-cols-7 gap-6">
