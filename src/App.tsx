@@ -11,8 +11,10 @@ const Wishlist = lazy(() => import("./pages/Wishlist"));
 const Checkout = lazy(() => import("./pages/Checkout"));
 const OrderConfirmation = lazy(() => import("./pages/OrderConfirmation"));
 const Login = lazy(() => import("./pages/Login"));
+const Footer = lazy(() => import("./components/layouts/Footer"));
 
 function App() {
+
   return (
     <>
       <HashRouter>
@@ -35,6 +37,7 @@ function App() {
                 />
               </Route>
             </Routes>
+            <Footer />
           </Suspense>
         </ErrorBoundary>
       </HashRouter>

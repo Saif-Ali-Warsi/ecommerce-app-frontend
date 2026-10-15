@@ -7,7 +7,7 @@ function generateDealDuration() {
   return 120 * 1000;
 }
 
-const DAY_MS = 60 * 100;
+// const DAY_MS = 60 * 100;
 const PAUSE_DURATION_MS = 60 * 1000;
 const DEAL_STORAGE_KEY = "dealSchedule";
 
