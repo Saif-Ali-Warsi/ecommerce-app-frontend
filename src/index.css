@@ -9,4 +9,6 @@ body {
   font-optical-sizing: auto;
   font-style: normal;
   background-color: #191c24;
+  max-width: 1500px;
+  margin: auto;
 }
