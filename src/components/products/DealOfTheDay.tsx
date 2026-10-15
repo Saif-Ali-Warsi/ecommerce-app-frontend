@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from "react";
+import type { ReactNode } from "react";
 
 function generateDealDuration() {
-  //   const hours = Math.floor(Math.random() * 10) + 1;
-  //   return hours * 60 * 60 * 1000;
-  return 60 * 1000;
+  // const hours = Math.floor(Math.random() * 10) + 1;
+  // return hours * 60 * 60 * 1000;
+  return 120 * 1000;
 }
 
-// const DAY_MS = 24 * 60 * 60 * 1000;
 const DAY_MS = 60 * 100;
 const PAUSE_DURATION_MS = 60 * 1000;
 const DEAL_STORAGE_KEY = "dealSchedule";
@@ -43,7 +43,12 @@ function getDealSchedule() {
   return schedule;
 }
 
-function DealOfTheDay() {
+type DealOfTheDayProps = {
+  children: ReactNode;
+};
+
+// Fixed: Only destructure `children` from props
+function DealOfTheDay({ children }: DealOfTheDayProps) {
   const [schedule, setSchedule] = useState(getDealSchedule);
   const [now, setNow] = useState(Date.now());
   const rolloverInProgress = useRef(false);
@@ -53,10 +58,9 @@ function DealOfTheDay() {
     schedule.cycleStart + schedule.durationMs - now,
   );
 
+  // Calculated internally
   const hours = Math.floor(remainingMs / (60 * 60 * 1000));
-
   const minutes = Math.floor((remainingMs % (60 * 60 * 1000)) / (60 * 1000));
-
   const seconds = Math.floor((remainingMs % (60 * 1000)) / 1000);
 
   const isDealActive = now < schedule.cycleStart + schedule.durationMs;
@@ -85,8 +89,6 @@ function DealOfTheDay() {
 
     rolloverInProgress.current = true;
 
-    const elapsedCycles = Math.floor((now - schedule.cycleStart) / DAY_MS);
-
     const newSchedule = {
       cycleStart: nextDealStart,
       durationMs: generateDealDuration(),
@@ -103,17 +105,41 @@ function DealOfTheDay() {
   }
 
   return (
-    <>
-      <section>
-        <h2>DEAL of the day</h2>
-        <p>Wireless Headphones - 30% off</p>
-        <p>Limited-time offer!</p>
-        <p>
-          {hours}hrs : {minutes}min : {seconds}secs left
-        </p>
-        <p>Use Coupon code: LIMITEDOFF</p>
-      </section>
-    </>
+    <section className="bg-[#191C24] p-6 sm:p-8 rounded-3xl shadow-[-8px_-8px_20px_#222631,8px_8px_20px_#101217] max-w-3xl mx-auto border-0">
+      {/* Header Badge */}
+      <div className="text-center mb-6">
+        <div className="inline-block px-4 py-1.5 bg-[#191C24] text-[#d9a79c] text-xs font-extrabold uppercase tracking-widest rounded-full shadow-[inset_2px_2px_5px_#101217,inset_-2px_-2px_5px_#222631]">
+          Deal of the Day
+        </div>
+      </div>
+
+      {/* Responsive Grid: 1 column on mobile, 2 columns on medium screens and up */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+        {/* Children content split into left and right inside parent usage */}
+        {children}
+
+        {/* Countdown Timer (Spans full width across columns at the bottom) */}
+        <div className="md:col-span-2 mt-2 p-4 bg-[#191C24] rounded-2xl shadow-[inset_3px_3px_7px_#101217,inset_-3px_-3px_7px_#222631] flex items-center justify-center gap-3">
+          <span className="text-xs uppercase tracking-wider text-[#8A93A5] font-semibold">
+            Ends In:
+          </span>
+          <p className="text-lg font-extrabold text-[#CFD4DC] tracking-wider drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
+            <span className="text-[#d9a79c]">
+              {String(hours).padStart(2, "0")}
+            </span>
+            h :{" "}
+            <span className="text-[#d9a79c]">
+              {String(minutes).padStart(2, "0")}
+            </span>
+            m :{" "}
+            <span className="text-[#d9a79c]">
+              {String(seconds).padStart(2, "0")}
+            </span>
+            s
+          </p>
+        </div>
+      </div>
+    </section>
   );
 }
 

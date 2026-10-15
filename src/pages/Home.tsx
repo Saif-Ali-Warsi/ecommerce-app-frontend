@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
 import type { Product } from "../types/product.types";
-import { getProducts, searchProducts } from "../services/productService";
+import {
+  getProducts,
+  searchProducts,
+  getProductById,
+} from "../services/productService";
 import ProductCard from "../components/products/ProductCard";
 import { useSearchParams } from "react-router-dom";
 import DealOfTheDay from "../components/products/DealOfTheDay";
@@ -9,6 +13,13 @@ function Home() {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState<Boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const [singleProduct, setSingleProduct] = useState<Product | null>(null);
+  const [singleProductTwo, setSingleProductTwo] = useState<Product | null>(
+    null,
+  );
+  const [singleProductThree, setSingleProductThree] = useState<Product | null>(
+    null,
+  );
 
   const [searchParams] = useSearchParams();
   const query = searchParams.get("q") ?? "";
@@ -35,9 +46,139 @@ function Home() {
     loadProducts();
   }, [query]);
 
+  useEffect(() => {
+    async function loadProduct(id: string) {
+      const singleProductData = await getProductById(id);
+
+      setSingleProduct(singleProductData);
+    }
+
+    loadProduct("79");
+  }, []);
+
+  useEffect(() => {
+    async function loadProduct(id: string) {
+      const singleProductTwoData = await getProductById(id);
+
+      setSingleProductTwo(singleProductTwoData);
+    }
+
+    loadProduct("161");
+  }, []);
+
+  useEffect(() => {
+    async function loadProduct(id: string) {
+      const singleProductThreeData = await getProductById(id);
+
+      setSingleProductThree(singleProductThreeData);
+    }
+
+    loadProduct("106");
+  }, []);
+
   return (
     <div className="mx-auto px-4 sm:px-4 lg:px-4 py-8">
-      <DealOfTheDay />
+      <div className="grid mb-10 px-3 sm:px-3 lg:px-3 grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-6">
+        <div>
+          <DealOfTheDay>
+            {/* Left Column: Product Card */}
+            <div className="flex justify-center md:justify-start">
+              {singleProduct && (
+                <ProductCard key={singleProduct.id} product={singleProduct} />
+              )}
+            </div>
+
+            {/* Right Column: Deal Info & Countdown Timer */}
+            <div className="flex flex-col justify-center text-center md:text-left space-y-4">
+              <div>
+                <h2 className="text-2xl font-bold text-[#CFD4DC] drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)] mb-1">
+                  AI Laptops 1TB
+                </h2>
+                <p className="text-lg font-bold text-rose-400">
+                  20% OFF — Limited-time offer!
+                </p>
+              </div>
+
+              {/* Neomorphic Coupon Code */}
+              <div className="flex items-center justify-center md:justify-start gap-2">
+                <span className="text-xs text-[#8A93A5]">Use Code:</span>
+                <code className="bg-[#191C24] text-[#d9a79c] font-mono font-bold text-sm px-3 py-1.5 rounded-xl shadow-[inset_2px_2px_4px_#101217,inset_-2px_-2px_4px_#222631]">
+                  LIMITED20OFF
+                </code>
+              </div>
+            </div>
+          </DealOfTheDay>
+        </div>
+
+        <div>
+          <DealOfTheDay>
+            {/* Left Column: Product Card */}
+            <div className="flex justify-center md:justify-start">
+              {singleProductTwo && (
+                <ProductCard
+                  key={singleProductTwo.id}
+                  product={singleProductTwo}
+                />
+              )}
+            </div>
+
+            {/* Right Column: Deal Info & Countdown Timer */}
+            <div className="flex flex-col justify-center text-center md:text-left space-y-4">
+              <div>
+                <h2 className="text-2xl font-bold text-[#CFD4DC] drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)] mb-1">
+                  All Apple iPad
+                </h2>
+                <p className="text-lg font-bold text-[#52f0fd]">
+                  30% OFF — Limited-time offer!
+                </p>
+              </div>
+
+              {/* Neomorphic Coupon Code */}
+              <div className="flex items-center justify-center md:justify-start gap-2">
+                <span className="text-xs text-[#8A93A5]">Use Code:</span>
+                <code className="bg-[#191C24] text-[#d9a79c] font-mono font-bold text-sm px-3 py-1.5 rounded-xl shadow-[inset_2px_2px_4px_#101217,inset_-2px_-2px_4px_#222631]">
+                  LIMITED30OFF
+                </code>
+              </div>
+            </div>
+          </DealOfTheDay>
+        </div>
+
+        <div>
+          <DealOfTheDay>
+            {/* Left Column: Product Card */}
+            <div className="flex justify-center md:justify-start">
+              {singleProductThree && (
+                <ProductCard
+                  key={singleProductThree.id}
+                  product={singleProductThree}
+                />
+              )}
+            </div>
+
+            {/* Right Column: Deal Info & Countdown Timer */}
+            <div className="flex flex-col justify-center text-center md:text-left space-y-4">
+              <div>
+                <h2 className="text-2xl font-bold text-[#CFD4DC] drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)] mb-1">
+                  On All Smart Watches
+                </h2>
+                <p className="text-lg font-bold text-[#f3e987]">
+                  40% OFF — Limited-time offer!
+                </p>
+              </div>
+
+              {/* Neomorphic Coupon Code */}
+              <div className="flex items-center justify-center md:justify-start gap-2">
+                <span className="text-xs text-[#8A93A5]">Use Code:</span>
+                <code className="bg-[#191C24] text-[#d9a79c] font-mono font-bold text-sm px-3 py-1.5 rounded-xl shadow-[inset_2px_2px_4px_#101217,inset_-2px_-2px_4px_#222631]">
+                  LIMITED40OFF
+                </code>
+              </div>
+            </div>
+          </DealOfTheDay>
+        </div>
+      </div>
+
       {/* 1. Loading State (Neomorphic Skeleton Grid) */}
       {loading && (
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 xl:grid-cols-5 xxl:grid-cols-7 gap-6">
