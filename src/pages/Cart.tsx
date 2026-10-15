@@ -68,7 +68,7 @@ function Cart() {
                 key={item.id}
                 className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-[#191C24] border-0 p-4 sm:p-5 rounded-2xl shadow-[-6px_-6px_14px_#222631,6px_6px_14px_#101217] transition-all"
               >
-                {/* Item Thumbnail & Info */}
+              
                 <div className="flex items-center gap-4 w-full sm:w-auto">
                   <Link to={`/products/${item.id}`}>
                     <div className="w-20 h-20 bg-[#191C24] rounded-xl overflow-hidden flex-shrink-0 p-1 shadow-[inset_2px_2px_5px_#101217,inset_-2px_-2px_5px_#222631]">
