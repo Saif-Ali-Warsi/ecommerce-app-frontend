@@ -17,6 +17,10 @@ class ErrorBoundary extends Component<Props, State> {
     return { hasError: true };
   }
 
+  handleRetry = () => {
+    this.setState({ hasError: false });
+  };
+
   render() {
     if (this.state.hasError) {
       return (
@@ -54,7 +58,7 @@ class ErrorBoundary extends Component<Props, State> {
             {/* Reload Action Button */}
             <div>
               <button
-                onClick={() => window.location.reload()}
+                onClick={() => this.handleRetry()}
                 className="w-full inline-flex justify-center items-center py-3 px-4 border border-transparent rounded-xl shadow-sm text-sm font-medium text-white bg-gray-900 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 transition-colors"
               >
                 Reload page
